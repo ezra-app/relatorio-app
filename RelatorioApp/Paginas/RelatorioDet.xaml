@@ -1,0 +1,138 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Relatorio2._0.Paginas.RelatorioDet"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+    <!--
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Opacity="0.5" IsVisible="False">
+            <shell:ApplicationBarIconButton x:Name="AppBarDetDelButton" IconUri="/Toolkit.Content/ApplicationBar.Delete.png" Text="Apagar" Click="AppBarDetDelButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar> -->
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition  Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition  Mode="SlideDownFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition  Mode="SlideUpFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition  Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/Imagens/app_background.png"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="150,0,10,810">
+            <TextBlock x:Name="MesTitulo" TextAlignment="Right" Text="Outubro 2013" FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="60" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-73,0,10,0" FontWeight="Bold" Width="383"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <!-- PROBLEMA DE FICAR EMBAÇADO: RenderTransformOrigin="0,0" Opacity="0.89" UseLayoutRounding="True"-->
+        <Grid x:Name="ContentPanel" Margin="0,122,10,116">
+            <Image HorizontalAlignment="Left" Height="6" VerticalAlignment="Top" Width="460" Source="/Imagens/horiz_line.png" Stretch="Fill" Margin="0,0,0,0" Opacity="0.6"/>
+            <!--<ListBox x:Name="DetalheListBox" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Margin="31,10,0,22">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                <StackPanel x:Name="DetalhePainel" Orientation="Horizontal" Margin="0,0,0,-4">
+                    <Grid HorizontalAlignment="Left" Height="150" Margin="10,11,0,0" VerticalAlignment="Top" Width="440">
+                        <TextBlock x:Name="Dia" Text="{Binding Data, StringFormat='Dia: {0:dd/MM}'}" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontSize="40" Height="46" TextDecorations="Underline" FontWeight="Bold"/>
+                        <TextBlock x:Name="Detalhe" Text="{Binding FormatedRelatorio}" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="391" FontSize="30" Height="75" FontWeight="Bold" Padding="0"/>
+                        <CheckBox x:Name="CheckBoxDet" CommandParameter="{Binding Path=Id}" HorizontalAlignment="Left" Margin="0,46,0,0" VerticalAlignment="Top" Width="39" Height="82" Opacity="0.9" Background="#BF0074FF" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" IsHitTestVisible="True"/>
+                        <Image HorizontalAlignment="Left" Height="6" VerticalAlignment="Top" Width="460" Source="/Imagens/horiz_line.png" Stretch="Fill" Margin="0,127,-20,0" Opacity="0.6"/>
+                    </Grid>
+                </StackPanel>
+                </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox-->
+
+            <ListBox x:Name="DetalheListBox" HorizontalAlignment="Left" Height="639" VerticalAlignment="Top" Width="435" Margin="25,6,0,0" >
+                <!-- -->
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <StackPanel Orientation="Vertical" Height="165">
+
+                                <StackPanel Orientation="Horizontal" Height="73">
+                                    <TextBlock TextWrapping="Wrap" FontFamily="{StaticResource Dancing}" Foreground="#FF0023FD" Text="{Binding Data, StringFormat='Dia: {0:dd/MM}'}"  Margin="5,20,0,0" Height="53" FontSize="35" FontWeight="Bold" FontStyle="Italic" Width="186" TextDecorations="Underline"/>
+                                    <Button Content="" CommandParameter="{Binding Path=Id}" Width="103" BorderBrush="{x:Null}" Foreground="#FF0023FD" Margin="10,0,0,-17" Click="Button_Click">
+                                        <Button.Background>
+                                            <ImageBrush Stretch="Fill" ImageSource="/Imagens/delete.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Vertical" Margin="0">
+                                        <TextBlock Text="Horas" FontFamily="{StaticResource Dancing}"  Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding FormatedHoras}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical"  Margin="6,0,0,0">
+                                        <TextBlock Text="Revistas" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Revistas}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" Width="44" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Margin="8,0,0,0">
+                                        <TextBlock Text="Revisitas" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Revisitas}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" Width="44" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Margin="8,0,0,0">
+                                        <TextBlock Text="Livros" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Livros}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" Width="44" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Margin="8,0,0,0">
+                                        <TextBlock Text="Brochuras" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Brochuras}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" Width="44" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+
+
+                            </StackPanel>
+                            <Image HorizontalAlignment="Left" Height="8" VerticalAlignment="Top" Width="460" Source="/Imagens/horiz_line.png" Stretch="Fill" Margin="0,147,-25,0" Opacity="0.6"/>
+                        </Grid>
+                        
+                    </DataTemplate>
+                </ListBox.ItemTemplate> 
+                <!-- -->
+            </ListBox>
+
+        </Grid>
+        <Image HorizontalAlignment="Left" Height="1016" Margin="24,-248,0,0" VerticalAlignment="Top" Width="4" Source="/Imagens/horiz_line.png" Stretch="Fill" Opacity="0.75"/>
+        <Image HorizontalAlignment="Left" Height="117" Margin="28,0,0,0" VerticalAlignment="Top" Width="67" Source="/Imagens/clip.png"/>
+
+
+    </Grid>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+
+</phone:PhoneApplicationPage>

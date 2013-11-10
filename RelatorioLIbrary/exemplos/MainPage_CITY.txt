@@ -1,0 +1,152 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Phone.Controls;
+using System.Windows;
+using System.Text;
+
+namespace WPLocalDatabase
+{
+    public partial class MainPage : PhoneApplicationPage
+    {
+        // short connection string format
+        private const string ConnectionString = @"isostore:/CountryDB.sdf";
+
+        // Constructor
+        public MainPage()
+        {
+            //InitializeComponent();
+
+            using (CountryDataContext context = new CountryDataContext(ConnectionString))
+            {
+
+                if (!context.DatabaseExists())
+                {
+                    // create database if it does not exist
+                    context.CreateDatabase();
+                }
+            }
+        }
+
+        private IList<Country> GetCountries()
+        {
+            IList<Country> countryList = null;
+            using (CountryDataContext context = new CountryDataContext(ConnectionString))
+            {
+                IQueryable<Country> query = from c in context.Countries select c;
+                countryList = query.ToList();
+            }
+
+            return countryList;
+        }
+
+        public IList<City> GetCities()
+        {
+            IList<City> cityList = null;
+            using (CountryDataContext context = new CountryDataContext(ConnectionString))
+            {
+                IQueryable<City> query = from c in context.Cities select c;
+                cityList = query.ToList();
+            }
+
+            return cityList;
+        }
+
+        private void AddCity()
+        {
+            using (CountryDataContext context = new CountryDataContext(ConnectionString))
+            {
+                // create a new country and add it to the context
+                Country country = new Country();
+                country.Name = "Spain";
+                // add the new country to the context
+                context.Countries.InsertOnSubmit(country);
+
+                // create a new city and add it to the context
+                City city = new City();
+                city.Name = "Barcelona";
+                city.Country = country;
+                // add the new city to the context
+                context.Cities.InsertOnSubmit(city);
+
+                // save changes to the database
+                context.SubmitChanges();
+            }
+        }
+
+        private void UpdateCity()
+        {
+            using (CountryDataContext context = new CountryDataContext(ConnectionString))
+            {
+                // find a city to update
+                IQueryable<City> cityQuery = from c in context.Cities where c.Name == "Barcelona" select c;
+                City cityToUpdate = cityQuery.FirstOrDefault();
+                
+                // update the city by changing its name
+                cityToUpdate.Name = "Madrid";
+
+                // save changes to the database
+                context.SubmitChanges();
+            }
+        }
+
+        private void DeleteCity()
+        {
+            using (CountryDataContext context = new CountryDataContext(ConnectionString))
+            {
+                // find a city to delete
+                IQueryable<City> cityQuery = from c in context.Cities where c.Name == "Madrid" select c;
+                City cityToDelete = cityQuery.FirstOrDefault();
+                
+                // delete city from the context
+                context.Cities.DeleteOnSubmit(cityToDelete);
+
+                // save changes to the database
+                context.SubmitChanges();
+            }
+        }
+
+        private void btnInitializeDB_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            this.AddCity();
+            MessageBox.Show("Added city");
+        }
+
+        private void btnSelectCountries_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            IList<Country> countries = this.GetCountries();
+
+            StringBuilder messageBuilder = new StringBuilder();
+            messageBuilder.AppendLine("Countries:");
+            foreach (Country country in countries)
+            {
+                messageBuilder.AppendLine(country.Name);
+            }
+            MessageBox.Show(messageBuilder.ToString());
+        }
+
+        private void btnUpdateCity_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            this.UpdateCity();
+            MessageBox.Show("Updated city");
+        }
+
+        private void btnDeleteCity_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            this.DeleteCity();
+            MessageBox.Show("Deleted city");
+        }
+
+        private void btnSelectCities_Click(object sender, RoutedEventArgs e)
+        {
+            IList<City> cities = this.GetCities();
+
+            StringBuilder messageBuilder = new StringBuilder();
+            messageBuilder.AppendLine("Cities:");
+            foreach (City city in cities)
+            {
+                messageBuilder.AppendLine(city.Name);
+            }
+            MessageBox.Show(messageBuilder.ToString());
+        }
+    }
+}

@@ -1,0 +1,235 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
+using System.IO.IsolatedStorage;
+using System.Collections;
+using Horas.Model;
+using Horas.DataBase.Repository;
+
+namespace Horas
+{
+    public partial class MainPage : PhoneApplicationPage
+    {
+        private RelatorioRepository relatorioRepository = new RelatorioRepository();
+        // Constructor
+        public MainPage()
+        {
+            
+            InitializeComponent();
+
+            // Set the data context of the listbox control to the sample data
+            DataContext = App.ViewModel;
+            this.Loaded += new RoutedEventHandler(MainPage_Loaded);
+            initializeAllComponents();
+        }
+
+        private void initializeAllComponents()
+        {
+            IsolatedStorageSettings iso = IsolatedStorageSettings.ApplicationSettings;
+            initializeRelatorioInt(livrosQtd.Name, sumLivros, iso);
+            initializeRelatorioInt(revisitasQtd.Name, sumRevisitas, iso);
+            initializeRelatorioInt(revistasQtd.Name, sumRevistas, iso);
+            initializeRelatorioInt(brochurasQtd.Name, sumBrochuras, iso);
+            initializeRelatorioStr(horasBox.Name, sumHoras, iso);
+
+            livrosQtd.Text = "";
+            revisitasQtd.Text = "";
+            revistasQtd.Text = "";
+            brochurasQtd.Text = "";
+            horasBox.ValueStringFormat = "{0:HH:mm}";
+            horasBox.Value = Convert.ToDateTime("00:00");
+        }
+
+        private void initializeRelatorioInt(String key, TextBlock textBlock, IsolatedStorageSettings iso)
+        {
+            Int64 value = 0;
+            if (iso.Contains(key))
+            {
+                iso.TryGetValue(key, out value);
+            }
+            textBlock.Text = Convert.ToString(value);
+            
+        }
+
+        private void initializeRelatorioStr(String key, TextBlock textBlock, IsolatedStorageSettings iso)
+        {
+            string value = "0";
+            if (iso.Contains(key))
+            {
+                iso.TryGetValue(key, out value);
+            }
+            textBlock.Text = value;
+
+        }
+
+        // Load data for the ViewModel Items
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!App.ViewModel.IsDataLoaded)
+            {
+                App.ViewModel.LoadData();
+            }
+            
+        }
+  
+
+        private void salvar_Click(object sender, EventArgs e)
+        {
+            save(revistasQtd);
+            save(revisitasQtd);
+            save(livrosQtd);
+            save(brochurasQtd);
+            saveHoras(horasBox);
+
+            initializeAllComponents();
+            updateTitle();
+
+        }
+
+        private TimeSpan getTimeSpanFromTimePicker(TimePicker timePicker)
+        {
+            int hours = getHourFromTimeString(timePicker.ValueString);
+            int minutes = getMinutesFromTimeString(timePicker.ValueString);
+            TimeSpan timeSpan = new TimeSpan(hours, minutes, 0);
+            return timeSpan;
+        }
+
+        private String save(TextBox textBox)
+        {
+            return saveISO(textBox);
+        }
+
+        private String saveHoras(TimePicker textBox)
+        {
+            return saveHorasISO(textBox);
+        }
+
+        private long convert(String value)
+        {
+            if (value != null)
+            {
+                return Convert.ToInt64(value.Equals("") ? "0" : value);
+            }
+            return 0;
+        }
+
+        private static string saveISO(TextBox textBox)
+        {
+            Int64 value = 0;
+            IsolatedStorageSettings iso = IsolatedStorageSettings.ApplicationSettings;
+            if (!iso.Contains(textBox.Name))
+            {
+                iso[textBox.Name] = Convert.ToInt64(textBox.Text.Equals("") ? "0" : textBox.Text);
+            }
+            else
+            {
+                iso.TryGetValue(textBox.Name, out value);
+                value += Convert.ToInt64(textBox.Text.Equals("") ? "0" : textBox.Text);
+                iso[textBox.Name] = value;
+            }
+            iso.TryGetValue(textBox.Name, out value);
+            return Convert.ToString(value);
+        }
+
+        private string saveHorasISO(TimePicker textBox)
+        {
+            string value;
+            IsolatedStorageSettings iso = IsolatedStorageSettings.ApplicationSettings;
+            if (!iso.Contains(textBox.Name))
+            {
+                iso[textBox.Name] = textBox.ValueString;
+            }
+            else
+            {
+                iso.TryGetValue(textBox.Name, out value);
+                int hours = getHourFromTimeString(value);
+                int minutes = getMinutesFromTimeString(value);
+                TimeSpan currentTs = new TimeSpan(hours, minutes, 0);
+
+                hours = getHourFromTimeString(textBox.ValueString);
+                minutes = getMinutesFromTimeString(textBox.ValueString);
+
+                TimeSpan addTs = new TimeSpan(hours, minutes, 0);
+
+                currentTs = currentTs + addTs;
+                iso[textBox.Name] = formatTime(currentTs);
+            }
+            iso.TryGetValue(textBox.Name, out value);
+            return Convert.ToString(value);
+        }
+
+        private string formatTime(TimeSpan ts)
+        {
+            return string.Format("{0:00}:", (ts.Days * 24 + ts.Hours)) + string.Format("{0:00}", (ts.Minutes));
+        }
+
+        private static int getMinutesFromTimeString(string value)
+        {
+             return Convert.ToInt32(value.Substring(value.IndexOf(":") + 1, 2));
+        }
+
+        private static int getHourFromTimeString(string value)
+        {
+            return Convert.ToInt32(value.Substring(0, value.IndexOf(":")));
+        }
+
+        private void updateTitle()
+        {
+            // get application tile
+            ShellTile tile = ShellTile.ActiveTiles.First();
+            if (null != tile)
+            {
+                // create a new data for tile
+                StandardTileData data = new StandardTileData();
+                // tile foreground data
+                data.BackgroundImage = new Uri("/Imagens/pencil_icon_blue.png", UriKind.Relative);
+                // to make tile flip add data to background also
+                data.BackTitle = "Relatório";
+                data.BackContent = "Horas: " + sumHoras.Text + "\n" + "Revistas: " + sumRevistas.Text + 
+                    "\nRevisitas: " + sumRevisitas.Text + "\nLivros: " + sumLivros.Text + "\nBrocuras: " + sumBrochuras.Text;
+                data.BackBackgroundImage = new Uri("/Imagens/back_image_blue.png", UriKind.Relative);
+                // update tile
+                tile.Update(data);
+            }
+        }
+
+        private void apagar_Click(object sender, EventArgs e)
+        {
+            IsolatedStorageSettings iso = IsolatedStorageSettings.ApplicationSettings;
+            iso.Clear();
+            initializeAllComponents();
+
+        }
+
+        private void dbTestClick(object sender, EventArgs e)
+        {
+            Relatorio relatorio = new Relatorio();
+            relatorio.Brochuras = convert(brochurasQtd.Text);
+            relatorio.Livros = convert(livrosQtd.Text);
+            relatorio.Revisitas = convert(revisitasQtd.Text);
+            relatorio.Revistas = convert(revistasQtd.Text);
+            relatorio.Horas = getTimeSpanFromTimePicker(horasBox);
+            relatorio.Data = Convert.ToDateTime(datePicker.ValueString);
+
+            relatorioRepository.Add(relatorio);
+
+            IList<Relatorio> relatoriosList = relatorioRepository.GetRelatorioPorData();
+            Relatorio relatorioFrist = relatoriosList.Last();
+            MessageBox.Show("SALVO! " + "Brochuras: \n" + Convert.ToString(relatorioFrist.Brochuras) 
+                + "\n" + "Data: " + relatorio.Data.ToLongDateString() + 
+                "Horas: " + formatTime(relatorio.Horas));
+
+        
+        }
+    }
+}
