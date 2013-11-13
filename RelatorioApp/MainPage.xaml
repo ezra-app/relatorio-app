@@ -15,7 +15,7 @@
     shell:SystemTray.IsVisible="True" x:Name="AppMainPage">
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Opacity="0.6" IsVisible="True" IsMenuEnabled="True" BackgroundColor="#FF19697D" ForegroundColor="White">
+        <shell:ApplicationBar Opacity="0.6" IsVisible="True" IsMenuEnabled="True" BackgroundColor="#FF19697D" ForegroundColor="Black">
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="sobreAppBar" Text="Sobre" Click="sobreAppBar_Click"/>
             </shell:ApplicationBar.MenuItems>
@@ -26,7 +26,7 @@
     </phone:PhoneApplicationPage.ApplicationBar>
 
     <phone:PhoneApplicationPage.Resources>
-        <shell:ApplicationBar x:Key="DefaultAppBar"  Opacity="0.6" BackgroundColor="#FF19697D" ForegroundColor="White">
+        <shell:ApplicationBar x:Key="DefaultAppBar"  Opacity="0.6" BackgroundColor="#FF19697D" ForegroundColor="Black">
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="sobreAppBar1" Text="Sobre" Click="sobreAppBar_Click"/>
             </shell:ApplicationBar.MenuItems>
@@ -35,7 +35,7 @@
             <shell:ApplicationBarIconButton x:Name="Iniciar1" IconUri="/Assets/AppBar/appbar.transport.play.rest.png" Text="Iniciar" Click="Iniciar_Click"/>
         </shell:ApplicationBar>
 
-        <shell:ApplicationBar x:Key="IniciadoContAppBar"  Opacity="0.6" BackgroundColor="#FF19697D" ForegroundColor="Black">
+        <shell:ApplicationBar x:Key="IniciadoContAppBar"  Opacity="0.6" BackgroundColor="#FF19697D" ForegroundColor="White">
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="sobreAppBar2" Text="Sobre" Click="sobreAppBar_Click"/>
             </shell:ApplicationBar.MenuItems>
@@ -166,8 +166,8 @@
                 <StackPanel.RenderTransform>
                     <CompositeTransform TranslateX="1"/>
                 </StackPanel.RenderTransform>
-                <TextBlock x:Name="MesTitulo" TextAlignment="Right" Text="Dezembro 2013" FontFamily="{StaticResource Dancing}" Foreground="#FF19697D" FontSize="60" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-73,0,10,0" FontWeight="Bold" Width="383"/>
-                <TextBlock x:Name="DiaTitulo" TextAlignment="Right" Text="Dia: 03" Foreground="#FF19697D" FontFamily="{StaticResource Dancing}" FontSize="48" HorizontalAlignment="Right" Margin="0,0,9,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBlock x:Name="MesTitulo" TextAlignment="Right" Text="Dezembro 2013" FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="60" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-73,0,10,0" FontWeight="Bold" Width="383"/>
+                <TextBlock x:Name="DiaTitulo" TextAlignment="Right" Text="Dia: 03" Foreground="Black" FontFamily="{StaticResource Dancing}" FontSize="48" HorizontalAlignment="Right" Margin="0,0,9,0" VerticalAlignment="Top" FontWeight="Bold"/>
             </StackPanel>
 
             <!--ContentPanel - place additional content here-->
