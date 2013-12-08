@@ -128,7 +128,7 @@
             </ListBox>
 
         </Grid>
-        <Image HorizontalAlignment="Left" Height="1016" Margin="24,-248,0,0" VerticalAlignment="Top" Width="4" Source="/Imagens/horiz_line.png" Stretch="Fill" Opacity="0.75"/>
+        <Image HorizontalAlignment="Left" Height="1063" Margin="24,-248,0,0" VerticalAlignment="Top" Width="4" Source="/Imagens/horiz_line.png" Stretch="Fill" Opacity="0.75"/>
         <Image HorizontalAlignment="Left" Height="117" Margin="28,0,0,0" VerticalAlignment="Top" Width="67" Source="/Imagens/clip.png"/>
 
 
