@@ -39,6 +39,7 @@ namespace Relatorio2._0.Paginas
             String nomeMes = Utils.formatarNomeMes(date);
             nomeMes = nomeMes.Substring(0, 1).ToUpper() + nomeMes.Substring(1);
             MesTitulo.Text = nomeMes;
+
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
@@ -110,5 +111,12 @@ namespace Relatorio2._0.Paginas
 
             
         }
+
+        private void DiaDet_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock dia = (TextBlock) sender;
+            dia.Text = Utils.formatarNomeSemana(date);
+        }
+
     }
 }

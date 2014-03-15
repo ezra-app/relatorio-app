@@ -55,7 +55,7 @@
                 </controls:PivotItem.Header>
                 <Grid HorizontalAlignment="Left" Height="607" VerticalAlignment="Top" Width="456">
                     <TextBlock HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" Text="Alvo: " VerticalAlignment="Top"/>
-                    <TextBox x:Name="AlvoConfig" TextAlignment="Center" HorizontalAlignment="Left" Height="71" Margin="59,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Text="00" InputScope="Number"/>
+                    <TextBox x:Name="AlvoConfig" MaxLength="3" TextAlignment="Center" HorizontalAlignment="Left" Height="71" Margin="59,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Text="00" InputScope="Number"/>
                 </Grid>
             </controls:PivotItem>
 

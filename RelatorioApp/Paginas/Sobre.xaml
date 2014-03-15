@@ -26,7 +26,9 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"/>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Versão: 1.1.4" VerticalAlignment="Top" Width="300"/>
+        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>

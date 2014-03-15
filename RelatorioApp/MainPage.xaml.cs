@@ -449,7 +449,7 @@ namespace RelatorioApp
 
         private void sobreAppBar_Click(object sender, EventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/Paginas/Sobre.xaml", UriKind.Relative));
         }
 
         private void SubEstudoBt_Click(object sender, RoutedEventArgs e)

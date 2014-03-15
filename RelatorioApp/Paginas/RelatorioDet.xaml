@@ -79,7 +79,7 @@
                 </ListBox.ItemTemplate>
             </ListBox-->
 
-            <ListBox x:Name="DetalheListBox" HorizontalAlignment="Left" Height="639" VerticalAlignment="Top" Width="435" Margin="25,6,0,0" >
+            <ListBox x:Name="DetalheListBox" HorizontalAlignment="Left" Height="669" VerticalAlignment="Top" Width="435" Margin="25,6,0,-29" >
                 <!-- -->
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -87,7 +87,7 @@
                             <StackPanel Orientation="Vertical" Height="165">
 
                                 <StackPanel Orientation="Horizontal" Height="73">
-                                    <TextBlock TextWrapping="Wrap" FontFamily="{StaticResource Dancing}" Foreground="#FF0023FD" Text="{Binding Data, StringFormat='Dia: {0:dd/MM}'}"  Margin="5,20,0,0" Height="53" FontSize="35" FontWeight="Bold" FontStyle="Italic" Width="186" TextDecorations="Underline"/>
+                                    <TextBlock x:Name="DiaDet" TextWrapping="Wrap" FontFamily="{StaticResource Dancing}" Foreground="#FF0023FD" Text="{Binding Data, StringFormat='Dia: {0:dd/MM}'}"  Margin="5,20,0,0" Height="53" FontSize="35" FontWeight="Bold" FontStyle="Italic" Width="186" TextDecorations="Underline" Loaded="DiaDet_Loaded"/>
                                     <Button Content="" CommandParameter="{Binding Path=Id}" Width="103" BorderBrush="{x:Null}" Foreground="#FF0023FD" Margin="10,0,0,-17" Click="Button_Click">
                                         <Button.Background>
                                             <ImageBrush Stretch="Fill" ImageSource="/Imagens/delete.png"/>
@@ -121,9 +121,9 @@
                             </StackPanel>
                             <Image HorizontalAlignment="Left" Height="8" VerticalAlignment="Top" Width="460" Source="/Imagens/horiz_line.png" Stretch="Fill" Margin="0,147,-25,0" Opacity="0.6"/>
                         </Grid>
-                        
+
                     </DataTemplate>
-                </ListBox.ItemTemplate> 
+                </ListBox.ItemTemplate>
                 <!-- -->
             </ListBox>
 
