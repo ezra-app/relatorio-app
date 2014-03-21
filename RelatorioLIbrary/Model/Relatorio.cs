@@ -55,6 +55,7 @@ namespace Horas.Model
 
         public String FormatedRelatorio { get; set; }
         public String FormatedHoras { get; set; }
+        public String FormatedDia { get; set; }
 
         
         //public String FormatedTime { get { return this.FormatedTime; } set { this.FormatedTime = GetFormatedTime(); } }
@@ -73,6 +74,8 @@ namespace Horas.Model
                 this.Livros + " livros, " + this.Brochuras + " brochuras.";
 
             this.FormatedHoras = Utils.FormatTime(ts);
+
+            this.FormatedDia = Utils.formatarNomeSemana(this.Data);
         }
     }
 }

@@ -12,7 +12,15 @@ namespace RelatorioLibrary.Util
     {
         public static int GetMinutesFromTimeString(string value)
         {
-            return Convert.ToInt32(value.Substring(value.IndexOf(":") + 1, 2));
+            try
+            {
+                return Convert.ToInt32(value.Substring(value.IndexOf(":") + 1, 2));
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+           
         }
 
         public static int GetHourFromTimeString(string value)
@@ -75,6 +83,12 @@ namespace RelatorioLibrary.Util
             return nomeMes.Substring(0, 1).ToUpper() + nomeMes.Substring(1);
         }
 
+        public static String formatarNomeSemana(DateTime now)
+        {
+            String nomeSemana = String.Format("{0:ddd}", now) + ", dia " + String.Format("{0:dd}", now);
+            return nomeSemana.Substring(0, 1).ToUpper() + nomeSemana.Substring(1);
+        }
+
         public static void AddToISOSettings(String key, String value)
         {
             IsolatedStorageSettings iso = IsolatedStorageSettings.ApplicationSettings;
@@ -112,6 +126,11 @@ namespace RelatorioLibrary.Util
                 return value;
             }
             return null;
+        }
+
+        public static object teste(String key)
+        {
+           
         }
 
     }
