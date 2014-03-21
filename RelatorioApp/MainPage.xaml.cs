@@ -29,8 +29,15 @@ namespace RelatorioApp
         // Constructor
         public MainPage()
         {
-            InitializeComponent();
-            InitializeAllComponents();
+            try
+            {
+                InitializeComponent();
+                InitializeAllComponents();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void InitializeAllComponents()
