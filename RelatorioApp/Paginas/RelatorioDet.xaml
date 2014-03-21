@@ -87,7 +87,7 @@
                             <StackPanel Orientation="Vertical" Height="165">
 
                                 <StackPanel Orientation="Horizontal" Height="73">
-                                    <TextBlock x:Name="DiaDet" TextWrapping="Wrap" FontFamily="{StaticResource Dancing}" Foreground="#FF0023FD" Text="{Binding Data, StringFormat='Dia: {0:dd/MM}'}"  Margin="5,20,0,0" Height="53" FontSize="35" FontWeight="Bold" FontStyle="Italic" Width="186" TextDecorations="Underline" Loaded="DiaDet_Loaded"/>
+                                    <TextBlock x:Name="DiaDet" TextWrapping="Wrap" FontFamily="{StaticResource Dancing}" Foreground="#FF0023FD" Text="{Binding FormatedDia}"  Margin="5,20,0,0" Height="53" FontSize="35" FontWeight="Bold" FontStyle="Italic" Width="186" TextDecorations="Underline"/>
                                     <Button Content="" CommandParameter="{Binding Path=Id}" Width="103" BorderBrush="{x:Null}" Foreground="#FF0023FD" Margin="10,0,0,-17" Click="Button_Click">
                                         <Button.Background>
                                             <ImageBrush Stretch="Fill" ImageSource="/Imagens/delete.png"/>

@@ -112,11 +112,5 @@ namespace Relatorio2._0.Paginas
             
         }
 
-        private void DiaDet_Loaded(object sender, RoutedEventArgs e)
-        {
-            TextBlock dia = (TextBlock) sender;
-            dia.Text = Utils.formatarNomeSemana(date);
-        }
-
     }
 }
