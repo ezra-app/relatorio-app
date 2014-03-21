@@ -128,7 +128,7 @@ namespace RelatorioLibrary.Util
             return null;
         }
 
-        public static object teste(String key)
+        public static void teste(String key)
         {
            
         }
