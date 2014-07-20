@@ -12,7 +12,7 @@ namespace Horas.Model
     public class Relatorio
     {
         public Relatorio(int Horas, int Minutos, long Revistas,
-            long Revisitas, long Brochuras, long Livros, DateTime Data)
+            long Revisitas, long Brochuras, long Livros, DateTime Data, long Folhetos)
         {
             this.Horas = Horas;
             this.Minutos = Minutos;
@@ -21,6 +21,7 @@ namespace Horas.Model
             this.Brochuras = Brochuras;
             this.Livros = Livros;
             this.Data = Data;
+            this.Folhetos = Folhetos;
             SetFormatedRelatorio();
         }
 
@@ -52,6 +53,9 @@ namespace Horas.Model
 
         [Column(Name = "data_relatorio", CanBeNull = true)]
         public DateTime Data { get; set; }
+
+        [Column(Name = "folhetos", DbType = "bigint DEFAULT 0", CanBeNull = true)]
+        public long Folhetos { get; set; }
 
         public String FormatedRelatorio { get; set; }
         public String FormatedHoras { get; set; }

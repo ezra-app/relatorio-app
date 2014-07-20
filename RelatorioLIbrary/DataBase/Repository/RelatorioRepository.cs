@@ -93,6 +93,7 @@ namespace Horas.DataBase.Repository
             long totalLivros = 0;
             int totalHoras = 0;
             int totalMinutos = 0;
+            long totalFolhetos = 0;
 
             foreach (Relatorio r in relatorios)
             {
@@ -102,10 +103,12 @@ namespace Horas.DataBase.Repository
                 totalRevistas += r.Revistas;
                 totalLivros += r.Livros;
                 totalBrochuras += r.Brochuras;
+                if (r.Folhetos != null)
+                    totalFolhetos += r.Folhetos;
             }
 
             relatorioTotal = new Relatorio(totalHoras, totalMinutos, totalRevistas,
-                totalRevisistas, totalBrochuras, totalLivros, DateTime.Now);
+                totalRevisistas, totalBrochuras, totalLivros, DateTime.Now, totalFolhetos);
 
             return relatorioTotal;
         }
@@ -121,6 +124,7 @@ namespace Horas.DataBase.Repository
             long totalLivros = 0;
             int totalHoras = 0;
             int totalMinutos = 0;
+            long totalFolhetos = 0;
 
             foreach (Relatorio r in relatorios)
             {
@@ -130,10 +134,12 @@ namespace Horas.DataBase.Repository
                 totalRevistas += r.Revistas;
                 totalLivros += r.Livros;
                 totalBrochuras += r.Brochuras;
+                if(r.Folhetos != null)
+                    totalFolhetos += r.Folhetos;
             }
 
             relatorioTotal = new Relatorio(totalHoras, totalMinutos, totalRevistas,
-                totalRevisistas, totalBrochuras, totalLivros, DateTime.Now);
+                totalRevisistas, totalBrochuras, totalLivros, DateTime.Now, totalFolhetos);
 
             return relatorioTotal;
         }

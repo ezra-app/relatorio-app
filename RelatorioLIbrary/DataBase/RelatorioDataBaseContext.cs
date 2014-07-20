@@ -13,7 +13,7 @@ namespace Horas.DataBase
     {
         //private const string ConnectionString = @"isostore:/Relatorio2.sdf";
         public static string ConnectionString = "Data Source=isostore:/Tese2.sdf";
-        private static int DB_VERSION = 1;
+        private static int DB_VERSION = 2;
 
         public RelatorioDataBaseContext(string connectionString)
             : base(connectionString)
@@ -43,10 +43,21 @@ namespace Horas.DataBase
 
                     if (dbUpdater.DatabaseSchemaVersion < DB_VERSION)
                     {
-                        dbUpdater.AddTable<Estudo>();
-                        dbUpdater.DatabaseSchemaVersion = DB_VERSION;
-                        dbUpdater.Execute();
+                        if (dbUpdater.DatabaseSchemaVersion == 0)
+                        {
+                            dbUpdater.AddTable<Estudo>();
+                            dbUpdater.DatabaseSchemaVersion = DB_VERSION;
+                            dbUpdater.Execute();
+                        }
+                        if (dbUpdater.DatabaseSchemaVersion < 2)
+                        {
+                            dbUpdater.AddColumn<Relatorio>("Folhetos");
+                            dbUpdater.DatabaseSchemaVersion = DB_VERSION;
+                            dbUpdater.Execute();
+                        }
+                   
                     }
+
 
                 }
                 catch (Exception e)

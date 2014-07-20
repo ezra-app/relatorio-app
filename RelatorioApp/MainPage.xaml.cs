@@ -36,7 +36,7 @@ namespace RelatorioApp
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(e.StackTrace);
             }
         }
 
@@ -57,12 +57,14 @@ namespace RelatorioApp
             InitializeTextBoxFocus(InputRevistas, "", "0");
             InitializeTextBoxFocus(InputLivros, "", "0");
             InitializeTextBoxFocus(InputBrochuras, "", "0");
+            InitializeTextBoxFocus(InputFolhetos, "", "0");
 
             Relatorio relatorio = relatorioRepository.GetRelatorioTotalMes(dateControlFlick);
             SomaLivros.Text = Convert.ToString(relatorio.Livros);
             SomaRevisitas.Text = Convert.ToString(relatorio.Revisitas);
             SomaRevistas.Text = Convert.ToString(relatorio.Revistas);
             SomaBrochuras.Text = Convert.ToString(relatorio.Brochuras);
+            SomaFolhetos.Text = Convert.ToString(relatorio.Folhetos);
             SomaHoras.Text = relatorio.GetFormatedTime();
 
             Estudo estudosMes = estudoRepository.GetByDate(dateControlFlick);
@@ -203,6 +205,7 @@ namespace RelatorioApp
             long livro = Utils.ConvertToLong(InputLivros.Text);
             long brochura = Utils.ConvertToLong(InputBrochuras.Text);
             int estudosQtd = Utils.ConvertToInt(SomaEstudos.Text);
+            long folhetos = Utils.ConvertToLong(InputFolhetos.Text);
 
             Estudo estudo = estudoRepository.GetByDate(dateControlFlick);
             if (estudo == null)
@@ -221,7 +224,7 @@ namespace RelatorioApp
 
             //DateTime data = Convert.ToDateTime(datePicker.ValueString);
 
-            Relatorio relatorio = new Relatorio(horas, min, revista, revisita, brochura, livro, dateControlFlick);
+            Relatorio relatorio = new Relatorio(horas, min, revista, revisita, brochura, livro, dateControlFlick, folhetos);
             relatorioRepository.Add(relatorio);
             InitializeAllComponents();
             updateTitle();
@@ -430,7 +433,7 @@ namespace RelatorioApp
                             int horas = totalTrabalhadas.Hours;
                             int min = totalTrabalhadas.Minutes;
 
-                            Relatorio relatorio = new Relatorio(horas, min, 0, 0, 0, 0, finalDate);
+                            Relatorio relatorio = new Relatorio(horas, min, 0, 0, 0, 0, finalDate, 0);
                             relatorioRepository.Add(relatorio);
                             Utils.AddToISOSettings(HORA_INI_TRABALHO_KEY, null);
                             InitializeAllComponents();
@@ -475,6 +478,11 @@ namespace RelatorioApp
 
             SomaEstudos.Text = Convert.ToString(++count);
 
+        }
+
+        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Paginas/Calculator.xaml", UriKind.Relative));
         }
 
 

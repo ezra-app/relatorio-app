@@ -15,6 +15,10 @@ namespace Relatorio2._0.Paginas
 
         private void SalcarConfigButton_Click(object sender, EventArgs e)
         {
+            if (AlvoConfig.Text.Equals(""))
+            {
+                AlvoConfig.Text = "00";
+            }
             Utils.AddToISOSettings("config.alvo", AlvoConfig.Text);
         }
 

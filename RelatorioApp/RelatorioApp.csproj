@@ -71,6 +71,9 @@
     <Compile Include="Paginas\Config.xaml.cs">
       <DependentUpon>Config.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\Calculator.xaml.cs">
+      <DependentUpon>Calculator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\RelatorioDet.xaml.cs">
       <DependentUpon>RelatorioDet.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
     </Page>
     <Page Include="Paginas\Config.xaml">
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Paginas\Calculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Paginas\RelatorioDet.xaml">
       <SubType>Designer</SubType>
