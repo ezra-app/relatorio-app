@@ -95,25 +95,32 @@
                                     </Button>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <StackPanel Orientation="Vertical" Margin="0">
-                                        <TextBlock Text="Horas" FontFamily="{StaticResource Dancing}"  Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                    <Border BorderThickness="2">
+                                    <StackPanel Orientation="Vertical" Margin="0" >
+                                        <TextBlock Text="Horas" FontFamily="{StaticResource Dancing}"  Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" ></TextBlock>
                                         <TextBlock Text="{Binding FormatedHoras}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"></TextBlock>
                                     </StackPanel>
+                                    </Border>
                                     <StackPanel Orientation="Vertical"  Margin="6,0,0,0">
-                                        <TextBlock Text="Revistas" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="Rev. Avul." FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="{Binding Revistas}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" Width="44" HorizontalAlignment="Center" FontSize="25"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" Margin="8,0,0,0">
-                                        <TextBlock Text="Revisitas" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="Revisi." FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="{Binding Revisitas}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" Width="44" HorizontalAlignment="Center" FontSize="25"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" Margin="8,0,0,0">
-                                        <TextBlock Text="Livros" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                        
+                                        <TextBlock Text="Livr." FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="{Binding Livros}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" Width="44" HorizontalAlignment="Center" FontSize="25"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" Margin="8,0,0,0">
-                                        <TextBlock Text="Brochuras" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="Broc." FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="{Binding Brochuras}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" Width="44" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Margin="8,0,0,0">
+                                        <TextBlock Text="Folh." FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="Black" Height="29" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Folhetos}" FontFamily="{StaticResource Dancing}" TextAlignment="Center" Foreground="#FF0023FD" VerticalAlignment="Center" Width="44" HorizontalAlignment="Center" FontSize="25"></TextBlock>
                                     </StackPanel>
                                 </StackPanel>
 
