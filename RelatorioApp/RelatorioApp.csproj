@@ -141,6 +141,7 @@
     <Content Include="Imagens\note.png" />
     <Content Include="Imagens\separator_manuscrito.png" />
     <Content Include="Imagens\seta.png" />
+    <Content Include="Imagens\seta_transd_yellow.png" />
     <Content Include="Imagens\Tiles_Medium-1_0-blackground.png" />
     <Content Include="Imagens\Tiles_Medium-1_0-whiteground.png" />
     <Content Include="Imagens\title_medio3.png" />

@@ -58,6 +58,7 @@ namespace RelatorioApp
             InitializeTextBoxFocus(InputLivros, "", "0");
             InitializeTextBoxFocus(InputBrochuras, "", "0");
             InitializeTextBoxFocus(InputFolhetos, "", "0");
+            InitializeMetasGrid(MetasGrid);
 
             Relatorio relatorio = relatorioRepository.GetRelatorioTotalMes(dateControlFlick);
             SomaLivros.Text = Convert.ToString(relatorio.Livros);
@@ -105,6 +106,8 @@ namespace RelatorioApp
 
         }
 
+
+
         void numercicTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(e.Key.ToString(), "[0-9]"))
@@ -126,6 +129,21 @@ namespace RelatorioApp
 
             textbox.KeyDown += new KeyEventHandler(numercicTextBox_KeyDown);
 
+        }
+
+        void InitializeMetasGrid(Grid metasGrid)
+        {
+            MetasGrid.Visibility = System.Windows.Visibility.Visible;
+            TransfHorasGrid.Visibility = System.Windows.Visibility.Visible;
+            if (dateControlFlick.Month != DateTime.Now.Month
+                || dateControlFlick.Year != DateTime.Now.Year)
+            {
+                MetasGrid.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            else
+            {
+                TransfHorasGrid.Visibility = System.Windows.Visibility.Collapsed;
+            }
         }
 
         private void CaulculeMeta(Relatorio relatorio)
@@ -485,7 +503,45 @@ namespace RelatorioApp
             NavigationService.Navigate(new Uri("/Paginas/Calculator.xaml", UriKind.Relative));
         }
 
+        private void TansfHorasBt_Click(object sender, RoutedEventArgs e)
+        {
+            int minExcedentes = Convert.ToInt16(SomaHoras.Text.Substring(3));
+            if (minExcedentes > 0)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox();
+                messageBox.Message = "Deseja mesmo transferir " + minExcedentes + " minutos para o mes atual?";
+                messageBox.LeftButtonContent = "SIM";
+                messageBox.RightButtonContent = "NAO";
 
+                messageBox.Dismissed += (s1, e1) =>
+                {
+                    switch (e1.Result)
+                    {
+                        case CustomMessageBoxResult.LeftButton:
+                            relatorioRepository.Add(new Relatorio(0, (minExcedentes * -1), 0, 0, 0, 0,
+                                new DateTime(dateControlFlick.Year, dateControlFlick.Month,
+                                DateTime.DaysInMonth(dateControlFlick.Year, dateControlFlick.Month)),
+                                0));
+                            relatorioRepository.Add(new Relatorio(0, minExcedentes, 0, 0, 0, 0, DateTime.Now, 0));
+                            dateControlFlick = DateTime.Now;
+                            InitializeAllComponents();
+                            updateTitle();
+                            break;
+                        case CustomMessageBoxResult.RightButton:
+                            // Do something.
+                            break;
+                        case CustomMessageBoxResult.None:
+                            // Do something.
+                            break;
+                        default:
+                            break;
+                    }
+                };
+
+                messageBox.Show();
+
+            }
+        }
 
 
     }
