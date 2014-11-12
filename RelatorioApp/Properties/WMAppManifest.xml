@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{d83fc48d-a0a4-4c2c-afb4-be4d2c2d0d5b}" Title="Relatorio" RuntimeType="Silverlight" Version="1.1.8.0" Genre="apps.normal" Author="Humberto Machado" Description="Simples app para um relatório de serviço de campo" Publisher="Relatorio2._0" BitsPerPixel="32">
+  <App xmlns="" ProductID="{d83fc48d-a0a4-4c2c-afb4-be4d2c2d0d5b}" Title="Relatorio" RuntimeType="Silverlight" Version="1.1.9.0" Genre="apps.normal" Author="Humberto Machado" Description="Simples app para um relatório de serviço de campo" Publisher="Relatorio2._0" BitsPerPixel="32">
     <IconPath IsRelative="true" IsResource="false">Imagens\title_medio3.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />
