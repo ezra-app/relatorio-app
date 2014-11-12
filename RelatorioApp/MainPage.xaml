@@ -226,9 +226,6 @@
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentContainer">
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
                                             </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ButtonBackground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FF373737"/>
-                                            </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ButtonBackground">
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
                                             </ObjectAnimationUsingKeyFrames>
@@ -396,7 +393,7 @@
                     <TextBlock x:Name="TextMeuRelatorio_Copy9" Visibility="Visible" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,272,0,-7" TextWrapping="Wrap" Text="Estudos Diferentes:" VerticalAlignment="Top" Width="262" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="53"/>
                     <Image HorizontalAlignment="Left" Height="45" Margin="232,272,-18,0" VerticalAlignment="Top" Width="60" Source="/Imagens/marca_texto.png" Grid.Column="1" Visibility="Visible"/>
                     <Image HorizontalAlignment="Left" Height="45" Margin="128,272,0,0" VerticalAlignment="Top" Width="60" Source="/Imagens/marca_texto.png" Grid.Column="1" Visibility="Visible"/>
-                    <Button x:Name="AddEstudoBt" Content="+" Foreground="Black" FontSize="35" FontWeight="ExtraBold" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Margin="223.008,257.736,-14.655,-11.593" VerticalAlignment="Top" Height="71.857" BorderThickness="0" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"  Width="65.647" Click="AddEstudoBt_Click" Grid.Column="1" Background="{x:Null}" Visibility="Visible">
+                    <Button x:Name="AddEstudoBt" Content="+" Foreground="Black" FontSize="35" FontWeight="ExtraBold" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Margin="223.008,257.736,-14.655,-11.593" VerticalAlignment="Top" Height="71.857" BorderThickness="0" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"  Width="65.647" Click="AddEstudoBt_Click" Grid.Column="1" Background="{x:Null}" Visibility="Visible" Style="{StaticResource ButtonStyle1}">
                         <Button.RenderTransform>
                             <CompositeTransform Rotation="-88.629"/>
                         </Button.RenderTransform>
