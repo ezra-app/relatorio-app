@@ -505,7 +505,7 @@ namespace RelatorioApp
 
         private void TansfHorasBt_Click(object sender, RoutedEventArgs e)
         {
-            int minExcedentes = Convert.ToInt16(SomaHoras.Text.Substring(3));
+            int minExcedentes = Utils.GetMinutesFromTimeString(SomaHoras.Text);
             if (minExcedentes > 0)
             {
                 CustomMessageBox messageBox = new CustomMessageBox();

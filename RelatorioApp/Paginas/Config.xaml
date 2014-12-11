@@ -56,18 +56,7 @@
                 <Grid HorizontalAlignment="Left" Height="607" VerticalAlignment="Top" Width="456">
                     <TextBlock HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" Text="Alvo: " VerticalAlignment="Top"/>
                     <TextBox x:Name="AlvoConfig" MaxLength="3" TextAlignment="Center" HorizontalAlignment="Left" Height="71" Margin="59,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Text="00" InputScope="Number"/>
-                </Grid>
-            </controls:PivotItem>
-
-            <controls:PivotItem Margin="12,10,12,0">
-                <controls:PivotItem.Header>
-                    <Grid>
-                        <TextBlock Name="Aparencia" FontSize="31" Text="Aparência" />
-                    </Grid>
-                </controls:PivotItem.Header>
-                <Grid HorizontalAlignment="Left" Height="607" VerticalAlignment="Top" Width="456">
-                    <TextBlock HorizontalAlignment="Left" Margin="10,32,0,0" TextWrapping="Wrap" Text="Tema" VerticalAlignment="Top"/>
-
+                    <ListBox HorizontalAlignment="Left" Height="76" Margin="34,117,0,0" VerticalAlignment="Top" Width="197"/>
                 </Grid>
             </controls:PivotItem>
 
