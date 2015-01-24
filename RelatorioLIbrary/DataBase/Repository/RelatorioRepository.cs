@@ -60,7 +60,7 @@ namespace Horas.DataBase.Repository
         {
             int mesReferencia = 9;
             int anoReferencia = data.Year;
-            if (data.Month != mesReferencia)
+            if (data.Month < mesReferencia)
             {
                 anoReferencia = data.Year - 1;
             }

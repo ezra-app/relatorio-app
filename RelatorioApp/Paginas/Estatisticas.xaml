@@ -25,7 +25,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Estatísticas 2014" Margin="24,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="{StaticResource Dancing}" Foreground="#FF040404" FontWeight="Bold" FontSize="60"/>
+            <TextBlock x:Name="Titulo" Text="Estatísticas " Margin="24,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="{StaticResource Dancing}" Foreground="#FF040404" FontWeight="Bold" FontSize="60"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -35,6 +35,7 @@
                 <TextBlock x:Name="RequisitoLabel" TextWrapping="Wrap" Text="   Requisito: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" FontWeight="Bold"/>
                 <TextBlock x:Name="TrabalhadasLabel" TextWrapping="Wrap" Text="   Você já trabalhou: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" FontWeight="Bold"/>
                 <TextBlock x:Name="FaltamLabel" TextWrapping="Wrap" Text="   Faltam: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" FontWeight="Bold"/>
+                <TextBlock x:Name="PorMesLabel" TextWrapping="Wrap" Text="   Preciso por mês: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" FontWeight="Bold"/>
             </StackPanel>
             <Image HorizontalAlignment="Left" Height="6" VerticalAlignment="Top" Width="144" Source="/Imagens/horiz_line.png" Stretch="Fill" Margin="3,43,0,0" Opacity="0.6"/>
 
