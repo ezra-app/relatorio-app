@@ -9,6 +9,7 @@
     <!--Application Resources-->
     <Application.Resources>
         <FontFamily x:Key="Dancing">/Fontes/Dancing_Script.ttf#Dancing Script</FontFamily>
+        <local:LocalizedStrings xmlns:local="clr-namespace:RelatorioApp.i18n" x:Key="LocalizedStrings" />
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

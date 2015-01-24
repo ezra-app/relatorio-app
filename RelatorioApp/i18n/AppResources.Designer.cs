@@ -22,7 +22,7 @@ namespace RelatorioApp.i18n {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AppResources {
+    public class AppResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace RelatorioApp.i18n {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RelatorioApp.i18n.AppResources", typeof(AppResources).Assembly);
@@ -51,7 +51,7 @@ namespace RelatorioApp.i18n {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,11 +61,119 @@ namespace RelatorioApp.i18n {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Teste.
+        ///   Looks up a localized string similar to Brochuras:.
         /// </summary>
-        internal static string TITULO {
+        public static string main_brochuras {
             get {
-                return ResourceManager.GetString("TITULO", resourceCulture);
+                return ResourceManager.GetString("main_brochuras", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estudos Diferentes:.
+        /// </summary>
+        public static string main_estudos {
+            get {
+                return ResourceManager.GetString("main_estudos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Faltam para acabar:.
+        /// </summary>
+        public static string main_faltamAcabar {
+            get {
+                return ResourceManager.GetString("main_faltamAcabar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folhetos:.
+        /// </summary>
+        public static string main_folhetos {
+            get {
+                return ResourceManager.GetString("main_folhetos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horas:.
+        /// </summary>
+        public static string main_horas {
+            get {
+                return ResourceManager.GetString("main_horas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Livros:.
+        /// </summary>
+        public static string main_livros {
+            get {
+                return ResourceManager.GetString("main_livros", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meu alvo é:.
+        /// </summary>
+        public static string main_meuAlvo {
+            get {
+                return ResourceManager.GetString("main_meuAlvo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to por dia.
+        /// </summary>
+        public static string main_porDia {
+            get {
+                return ResourceManager.GetString("main_porDia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preciso de .
+        /// </summary>
+        public static string main_precisoDe {
+            get {
+                return ResourceManager.GetString("main_precisoDe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rev. Avul:.
+        /// </summary>
+        public static string main_revAvul {
+            get {
+                return ResourceManager.GetString("main_revAvul", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revisitas:.
+        /// </summary>
+        public static string main_revisitas {
+            get {
+                return ResourceManager.GetString("main_revisitas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meu Relatorio:.
+        /// </summary>
+        public static string main_titulo {
+            get {
+                return ResourceManager.GetString("main_titulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trabalho iniciado:.
+        /// </summary>
+        public static string main_trabalhoIniciado {
+            get {
+                return ResourceManager.GetString("main_trabalhoIniciado", resourceCulture);
             }
         }
     }

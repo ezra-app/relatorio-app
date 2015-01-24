@@ -117,7 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TITULO" xml:space="preserve">
-    <value>Teste pt_BR</value>
+  <data name="main_brochuras" xml:space="preserve">
+    <value>Otras Publ.:</value>
+  </data>
+  <data name="main_estudos" xml:space="preserve">
+    <value>Estudios:</value>
+  </data>
+  <data name="main_faltamAcabar" xml:space="preserve">
+    <value>Tiempo restante:</value>
+  </data>
+  <data name="main_folhetos" xml:space="preserve">
+    <value>Folletos:</value>
+  </data>
+  <data name="main_horas" xml:space="preserve">
+    <value>Horas:</value>
+  </data>
+  <data name="main_livros" xml:space="preserve">
+    <value>Libros:</value>
+  </data>
+  <data name="main_meuAlvo" xml:space="preserve">
+    <value>Meu Alvo:</value>
+  </data>
+  <data name="main_porDia" xml:space="preserve">
+    <value>por día</value>
+  </data>
+  <data name="main_precisoDe" xml:space="preserve">
+    <value>Necesitará</value>
+  </data>
+  <data name="main_revAvul" xml:space="preserve">
+    <value>Revistas:</value>
+  </data>
+  <data name="main_revisitas" xml:space="preserve">
+    <value>Revisitas:</value>
+  </data>
+  <data name="main_titulo" xml:space="preserve">
+    <value>Mi Informe:</value>
+  </data>
+  <data name="main_trabalhoIniciado" xml:space="preserve">
+    <value>Trabajos iniciados:</value>
   </data>
 </root>

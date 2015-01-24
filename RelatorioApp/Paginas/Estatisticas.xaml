@@ -25,17 +25,22 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Estatísticas 2014" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="/RelatorioApp;component/Fontes/Dancing_Script.ttf#Dancing Script" Foreground="#FF040404" FontWeight="Bold" FontSize="60"/>
+            <TextBlock Text="Estatísticas 2014" Margin="24,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="{StaticResource Dancing}" Foreground="#FF040404" FontWeight="Bold" FontSize="60"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Margin="41,102,10,10" Grid.RowSpan="2">
             <StackPanel HorizontalAlignment="Left" Height="646" Margin="10,10,0,0" VerticalAlignment="Top" Width="446">
-                <TextBlock TextWrapping="Wrap" Text="Horas por Ano: 840" FontFamily="/RelatorioApp;component/Fontes/Dancing_Script.ttf#Dancing Script" Foreground="Black" FontSize="30" FontWeight="Bold"/>
-                <TextBlock TextWrapping="Wrap" Text="Faltam: " FontFamily="/RelatorioApp;component/Fontes/Dancing_Script.ttf#Dancing Script" Foreground="Black" FontSize="30" FontWeight="Bold"/>
+                <TextBlock TextWrapping="Wrap" Text="Por Ano:" FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" FontWeight="Bold"/>
+                <TextBlock x:Name="RequisitoLabel" TextWrapping="Wrap" Text="   Requisito: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" FontWeight="Bold"/>
+                <TextBlock x:Name="TrabalhadasLabel" TextWrapping="Wrap" Text="   Você já trabalhou: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" FontWeight="Bold"/>
+                <TextBlock x:Name="FaltamLabel" TextWrapping="Wrap" Text="   Faltam: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" FontWeight="Bold"/>
             </StackPanel>
+            <Image HorizontalAlignment="Left" Height="6" VerticalAlignment="Top" Width="144" Source="/Imagens/horiz_line.png" Stretch="Fill" Margin="3,43,0,0" Opacity="0.6"/>
 
         </Grid>
+        <Image HorizontalAlignment="Left" Height="1016" Margin="27,-250,0,0" VerticalAlignment="Top" Width="4" Source="/Imagens/horiz_line.png" Stretch="Fill" Opacity="0.75" d:IsLocked="True"/>
+        <Image HorizontalAlignment="Left" Height="6" VerticalAlignment="Top" Width="460" Source="/Imagens/horiz_line.png" Stretch="Fill" Margin="16,91,0,0" Opacity="0.6" d:IsLocked="True"/>
     </Grid>
 
 </phone:PhoneApplicationPage>

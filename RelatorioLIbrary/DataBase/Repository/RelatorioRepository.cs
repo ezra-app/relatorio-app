@@ -56,6 +56,42 @@ namespace Horas.DataBase.Repository
             return relatorioList;
         }
 
+        public IList<Relatorio> ListaRelatorioAnual(DateTime data)
+        {
+            int mesReferencia = 9;
+            int anoReferencia = data.Year;
+            if (data.Month != mesReferencia)
+            {
+                anoReferencia = data.Year - 1;
+            }
+
+            IList<Relatorio> relatorioList = new List<Relatorio>();
+            using (RelatorioDataBaseContext context = new RelatorioDataBaseContext(RelatorioDataBaseContext.ConnectionString))
+            {
+                try
+                {
+                    IQueryable<Relatorio> query =
+                        from c in context.RelatorioTable
+                        where
+                        (c.Data.Month >= mesReferencia &&
+                        c.Data.Year == anoReferencia) ||
+                        (c.Data.Month <= data.Month &&
+                        c.Data.Year == data.Year)
+                        orderby c.Data descending
+                        select c;
+                    relatorioList = query.ToList();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.StackTrace);
+                    Debug.WriteLine(e.Message);
+                    MessageBox.Show("PROBLEMA NA LISTAGEM POR DATA");
+                }
+            }
+
+            return relatorioList;
+        }
+
         public IList<Relatorio> Delete(long Id)
         {
             IList<Relatorio> relatorioList = null;
@@ -135,6 +171,37 @@ namespace Horas.DataBase.Repository
                 totalLivros += r.Livros;
                 totalBrochuras += r.Brochuras;
                 if(r.Folhetos != null)
+                    totalFolhetos += r.Folhetos;
+            }
+
+            relatorioTotal = new Relatorio(totalHoras, totalMinutos, totalRevistas,
+                totalRevisistas, totalBrochuras, totalLivros, DateTime.Now, totalFolhetos);
+
+            return relatorioTotal;
+        }
+
+        public Relatorio GetRelatorioTotalAno()
+        {
+            IList<Relatorio> relatorios = ListaRelatorioAnual(DateTime.Now);
+
+            Relatorio relatorioTotal = null;
+            long totalRevistas = 0;
+            long totalRevisistas = 0;
+            long totalBrochuras = 0;
+            long totalLivros = 0;
+            int totalHoras = 0;
+            int totalMinutos = 0;
+            long totalFolhetos = 0;
+
+            foreach (Relatorio r in relatorios)
+            {
+                totalHoras += r.Horas;
+                totalMinutos += r.Minutos;
+                totalRevisistas += r.Revisitas;
+                totalRevistas += r.Revistas;
+                totalLivros += r.Livros;
+                totalBrochuras += r.Brochuras;
+                if (r.Folhetos != null)
                     totalFolhetos += r.Folhetos;
             }
 

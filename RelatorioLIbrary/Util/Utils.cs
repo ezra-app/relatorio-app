@@ -117,7 +117,7 @@ namespace RelatorioLibrary.Util
             iso.Save();
         }
 
-        public static object GetIsoSettingsAsString(String key)
+        public static String GetIsoSettingsAsString(String key)
         {
             IsolatedStorageSettings iso = IsolatedStorageSettings.ApplicationSettings;
             String value;
@@ -125,7 +125,7 @@ namespace RelatorioLibrary.Util
             {
                 return value;
             }
-            return null;
+            return "";
         }
 
         public static void teste(String key)

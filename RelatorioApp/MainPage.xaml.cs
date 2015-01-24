@@ -15,6 +15,7 @@ using Horas.Model;
 using Microsoft.Phone.Shell;
 using System.IO.IsolatedStorage;
 using Horas.DataBase.Repository;
+using Microsoft.Phone.Tasks;
 
 namespace RelatorioApp
 {
@@ -93,7 +94,7 @@ namespace RelatorioApp
 
             CaulculeMeta(relatorio);
 
-            if (Utils.GetIsoSettingsAsString(HORA_INI_TRABALHO_KEY) == null)
+            if (Utils.GetIsoSettingsAsString(HORA_INI_TRABALHO_KEY) == "" || Utils.GetIsoSettingsAsString(HORA_INI_TRABALHO_KEY) == null)
             {
                 ContadorTrabalho.Visibility = Visibility.Collapsed;
             }
@@ -420,7 +421,7 @@ namespace RelatorioApp
 
         private void Iniciar_Click(object sender, EventArgs e)
         {
-            if (Utils.GetIsoSettingsAsString(HORA_INI_TRABALHO_KEY) == null)
+            if (Utils.GetIsoSettingsAsString(HORA_INI_TRABALHO_KEY) == "" || Utils.GetIsoSettingsAsString(HORA_INI_TRABALHO_KEY) == null)
             {
                 this.ApplicationBar = ((ApplicationBar)this.Resources["IniciadoContAppBar"]);
                 DateTime now = DateTime.Now;
@@ -541,6 +542,40 @@ namespace RelatorioApp
                 messageBox.Show();
 
             }
+        }
+
+        private void AppBarBruttonEmail_Click(object sender, EventArgs e)
+        {
+            String email = Utils.GetIsoSettingsAsString("config.email");
+            String body =   
+                "Horas: " + SomaHoras.Text +
+                "\nRevistas Avulsas: " + SomaRevistas.Text +
+                "\nRevisitas: " + SomaRevisitas.Text + 
+                "\nLivros: " + SomaLivros.Text + 
+                "\nBrochuras: " + SomaBrochuras.Text +
+                "\nFolhetos: " + SomaFolhetos.Text +
+                "\nEstudos: " + SomaEstudos.Text;
+            
+            if (email != null && email != "")
+            {
+                EmailComposeTask emailComposeTask = new EmailComposeTask();
+
+                emailComposeTask.Subject = "Relatório de " + MesTitulo.Text;
+                emailComposeTask.Body = body;
+                emailComposeTask.To = email;
+
+                emailComposeTask.Show();
+            }
+            else
+            {
+                MessageBox.Show("Email não cadastrado. Por favor cadastre na área de configurações");
+            }
+            
+        }
+
+        private void estatisticasAppBar_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Paginas/Estatisticas.xaml", UriKind.Relative));
         }
 
 

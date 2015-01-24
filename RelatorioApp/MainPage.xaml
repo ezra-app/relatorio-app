@@ -20,9 +20,11 @@
         <shell:ApplicationBar Opacity="0.6" IsVisible="True" IsMenuEnabled="True" BackgroundColor="#FF19697D" ForegroundColor="Black">
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="sobreAppBar" Text="Sobre" Click="sobreAppBar_Click"/>
+                <shell:ApplicationBarMenuItem x:Name="estatisticasAppBar" Text="Estatísticas" Click="estatisticasAppBar_Click"/>
             </shell:ApplicationBar.MenuItems>
             <shell:ApplicationBarIconButton x:Name="AppBarrSalvar" IconUri="/Assets/AppBar/appbar.save.rest.png" Text="Salvar" Click="AppBarrSalvar_Click"/>
             <shell:ApplicationBarIconButton x:Name="AppBarConfigButton" IconUri="/Assets/AppBar/appbar.feature.settings.rest.png" Text="Config" Click="AppBarConfigButton_Click"/>
+            <shell:ApplicationBarIconButton x:Name="AppBarBruttonEmail" IconUri="/Assets/AppBar/appbar.feature.email.rest.png" Text="Enviar" Click="AppBarBruttonEmail_Click"/>
             <shell:ApplicationBarIconButton x:Name="Iniciar" IconUri="/Assets/AppBar/appbar.transport.play.rest.png" Text="Iniciar" Click="Iniciar_Click"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
@@ -333,17 +335,17 @@
                         <ColumnDefinition Width="83*"/>
                         <ColumnDefinition Width="137*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="TextMeuRelatorio_Copy" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,4,0,0" TextWrapping="Wrap" Text="Horas:" VerticalAlignment="Top" Width="96" FontSize="35" FontWeight="Bold" Height="40"/>
+                    <TextBlock x:Name="TextMeuRelatorio_Copy" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,4,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_horas, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="96" FontSize="35" FontWeight="Bold" Height="40"/>
                     <Image HorizontalAlignment="Left" Height="25" Margin="16,10,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
                     <Image HorizontalAlignment="Left" Height="25" Margin="16,53,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
                     <Image HorizontalAlignment="Left" Height="25" Margin="16,96,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
                     <Image HorizontalAlignment="Left" Height="25" Margin="16,141,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
                     <Image HorizontalAlignment="Left" Height="25" Margin="16,186,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
 
-                    <TextBlock x:Name="TextMeuRelatorio_Copy1" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,48,0,0" TextWrapping="Wrap" Text="Rev. Avul:" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Height="40" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="TextMeuRelatorio_Copy2" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,94,0,0" TextWrapping="Wrap" Text="Revisitas:" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
-                    <TextBlock x:Name="TextMeuRelatorio_Copy3" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="38,138,0,0" TextWrapping="Wrap" Text="Livros:" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
-                    <TextBlock x:Name="TextMeuRelatorio_Copy4" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,184,0,-4" TextWrapping="Wrap" Text="Brochuras:" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
+                    <TextBlock x:Name="TextMeuRelatorio_Copy1" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,48,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_revAvul, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Height="40" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="TextMeuRelatorio_Copy2" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,94,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_revisitas, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
+                    <TextBlock x:Name="TextMeuRelatorio_Copy3" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="38,138,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_livros, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
+                    <TextBlock x:Name="TextMeuRelatorio_Copy4" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,184,0,-4" TextWrapping="Wrap" Text="{Binding AppResources.main_brochuras, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
                     <TextBlock HorizontalAlignment="Left" Margin="110,-2,0,0" Foreground="Black" FontFamily="{StaticResource Dancing}" TextWrapping="Wrap" Text="+" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Grid.Column="1" Height="41" Width="22"/>
 
                     <Canvas x:Name="SomatoriosGroup" RenderTransformOrigin="0.5,0.5">
@@ -390,7 +392,7 @@
                     </TextBox>
                     <TextBlock x:Name="TextMeuRelatorio_Copy5" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="209,-2,49,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontSize="35" FontWeight="Bold" Height="40" Grid.Column="1"/>
                     <Image HorizontalAlignment="Left" Visibility="Visible" Height="25" Margin="16,276,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
-                    <TextBlock x:Name="TextMeuRelatorio_Copy9" Visibility="Visible" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,272,0,-7" TextWrapping="Wrap" Text="Estudos Diferentes:" VerticalAlignment="Top" Width="262" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="53"/>
+                    <TextBlock x:Name="TextMeuRelatorio_Copy9" Visibility="Visible" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,272,0,-7" TextWrapping="Wrap" Text="{Binding AppResources.main_estudos, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="262" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="53"/>
                     <Image HorizontalAlignment="Left" Height="45" Margin="232,272,-18,0" VerticalAlignment="Top" Width="60" Source="/Imagens/marca_texto.png" Grid.Column="1" Visibility="Visible"/>
                     <Image HorizontalAlignment="Left" Height="45" Margin="128,272,0,0" VerticalAlignment="Top" Width="60" Source="/Imagens/marca_texto.png" Grid.Column="1" Visibility="Visible"/>
                     <Button x:Name="AddEstudoBt" Content="+" Foreground="Black" FontSize="35" FontWeight="ExtraBold" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Margin="223.008,257.736,-14.655,-11.593" VerticalAlignment="Top" Height="71.857" BorderThickness="0" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"  Width="65.647" Click="AddEstudoBt_Click" Grid.Column="1" Background="{x:Null}" Visibility="Visible" Style="{StaticResource ButtonStyle1}">
@@ -404,7 +406,7 @@
                         </Button.RenderTransform>
                     </Button>
                     <Image HorizontalAlignment="Left" Height="25" Margin="16,229,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
-                    <TextBlock x:Name="TextMeuFolhetos" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,228,0,0" TextWrapping="Wrap" Text="Folhetos:" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
+                    <TextBlock x:Name="TextMeuFolhetos" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="36,228,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_folhetos, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
                     <TextBlock HorizontalAlignment="Left" Margin="110,226,0,0" Foreground="Black" FontFamily="{StaticResource Dancing}" TextWrapping="Wrap" Text="+" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Grid.Column="1" Height="41" Width="22"/>
 
                 </Grid>
@@ -413,14 +415,14 @@
                         <ColumnDefinition Width="12*"/>
                         <ColumnDefinition Width="29*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="TextMeuRelatorio_Copy6" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="91,0,0,0" TextWrapping="Wrap" Text="Meu alvo é:" VerticalAlignment="Top" Width="162" FontSize="40" Height="46" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="PrecisoDeTxt" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="24,46,0,0" TextWrapping="Wrap" Text="Preciso de " VerticalAlignment="Top" Width="147" FontSize="40" Height="40" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="FaltamParaAcabarTxt" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="37,93,0,0" TextWrapping="Wrap" Text="Faltam para acabar:" VerticalAlignment="Top" Width="302" FontSize="37" Height="40" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="TextMeuRelatorio_Copy6" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="91,0,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_meuAlvo, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="162" FontSize="40" Height="46" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="PrecisoDeTxt" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="24,46,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_precisoDe, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="147" FontSize="40" Height="40" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="FaltamParaAcabarTxt" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="37,93,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_faltamAcabar, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="302" FontSize="37" Height="40" Grid.ColumnSpan="2"/>
                     <TextBlock x:Name="MetaTextBlock" HorizontalAlignment="Left" Foreground="#FFBF2314" FontFamily="{StaticResource Dancing}" Margin="129.5,12,0,0" TextWrapping="Wrap" Text="10:00 h" VerticalAlignment="Top" Width="181" FontSize="28" FontWeight="Bold" Height="40" FontStyle="Italic" TextDecorations="Underline" Grid.Column="1"/>
                     <TextBlock x:Name="PorDiaTextBlock" TextAlignment="Center" HorizontalAlignment="Left" Foreground="#FFBF2314" FontFamily="{StaticResource Dancing}" Margin="63,57,0,0" TextWrapping="Wrap" Text="20:00 h" VerticalAlignment="Top" Width="351" FontSize="28" Height="40" FontStyle="Italic" TextDecorations="Underline" FontWeight="Bold" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="PorDiaTxt" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="203.5,49,0,0" TextWrapping="Wrap" Text="por dia" VerticalAlignment="Top" Width="105" FontSize="37" Height="40" Grid.Column="1"/>
+                    <TextBlock x:Name="PorDiaTxt" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="203.5,49,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_porDia, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="105" FontSize="37" Height="40" Grid.Column="1"/>
                     <TextBlock x:Name="FaltamTextBlock" HorizontalAlignment="Left" Foreground="#FFBF2314" FontFamily="{StaticResource Dancing}" Margin="180.5,102,-6,0" TextWrapping="Wrap" Text="70:00 h" VerticalAlignment="Top" Width="144" FontSize="28" FontWeight="Bold" Height="40" FontStyle="Italic" TextDecorations="Underline" Grid.Column="1"/>
-                    <TextBlock x:Name="ContadorTrabalho" TextAlignment="Right" HorizontalAlignment="Right" Foreground="Black" FontFamily="{StaticResource Dancing}" Margin="0,132,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="432" FontSize="28" Height="46" RenderTransformOrigin="1.019,3.304" Text="Trabalho iniciado: " FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="ContadorTrabalho" TextAlignment="Right" HorizontalAlignment="Right" Foreground="Black" FontFamily="{StaticResource Dancing}" Margin="0,132,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="432" FontSize="28" Height="46" RenderTransformOrigin="1.019,3.304" Text="{Binding AppResources.main_trabalhoIniciado, Mode=OneWay, Source={StaticResource LocalizedStrings}}" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2"/>
                 </Grid>
                 <Image HorizontalAlignment="Left" Height="22" Margin="96,382,0,0" VerticalAlignment="Top" Width="272" Source="/Imagens/separator_manuscrito.png" Grid.ColumnSpan="2"/>
                 <Grid x:Name="TransfHorasGrid" HorizontalAlignment="Left" Height="141" Margin="31,414,0,0" VerticalAlignment="Top" Width="419" Opacity="0.9" d:IsHidden="True" d:IsLocked="True" Grid.ColumnSpan="2">
@@ -502,7 +504,7 @@
                 </Grid>
 
             </Grid>
-            <TextBlock x:Name="TextMeuRelatorio" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="123,129,0,0" TextWrapping="Wrap" Text="Meu Relatório:" VerticalAlignment="Top" Width="230" FontSize="40" FontWeight="Bold"/>
+            <TextBlock x:Name="TextMeuRelatorio" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="123,129,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_titulo, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="230" FontSize="40" FontWeight="Bold"/>
         </Grid>
         <Button x:Name="EditarButton" Content=" Editar" Foreground="#FF0023FD" FontSize="35" FontWeight="ExtraBold" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Margin="-3.623,55.491,0,0" VerticalAlignment="Top" Height="111.488" BorderThickness="0" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"  Width="150.917" Click="Button_Click_1">
             <Button.Resources>
