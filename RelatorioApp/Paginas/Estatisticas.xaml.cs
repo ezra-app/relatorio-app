@@ -22,11 +22,11 @@ namespace RelatorioApp.Paginas
             InitializeComponent();
 
             String alvoAnual = Utils.GetIsoSettingsAsString("config.alvoAnual");
-            int mesRef = 9;
+            int mesInicial = 9;
             int anoRef = DateTime.Now.Year;
-            if (DateTime.Now.Month < mesRef)
+            if (DateTime.Now.Month >= mesInicial)
             {
-                anoRef = DateTime.Now.Year - 1;
+                anoRef = DateTime.Now.Year + 1;
             }
 
             Titulo.Text += anoRef;
@@ -42,11 +42,16 @@ namespace RelatorioApp.Paginas
                 int mesesQueFaltam = 0;
                 if (anoRef == DateTime.Now.Year)
                 {
-                    mesesQueFaltam = mesRef + (12 - DateTime.Now.Month);
+                    mesesQueFaltam = mesInicial - DateTime.Now.Month;
                 }
                 else
                 {
-                    mesesQueFaltam = mesRef - DateTime.Now.Month;
+                    mesesQueFaltam = mesInicial + (12 - DateTime.Now.Month);
+                }
+
+                if (DateTime.Now.Month != mesInicial - 1)
+                {
+                    mesesQueFaltam--;
                 }
 
                 int faltamEmMinutos = alvoAnualEmMin - horasTotaisEmMin;
@@ -63,6 +68,13 @@ namespace RelatorioApp.Paginas
 
                 TrabalhadasLabel.Text += relatorio.GetFormatedTime() + " hrs";
                 RequisitoLabel.Text += alvoAnual + ":00 hrs";
+
+                totaisRevistas.Text += relatorio.Revistas.ToString();
+                totaisRevisitas.Text += relatorio.Revisitas.ToString();
+                totaisLivros.Text += relatorio.Livros.ToString();
+                totaisBrochuras.Text += relatorio.Brochuras.ToString();
+                totaisFolhetos.Text += relatorio.Folhetos.ToString();
+
 
             }
             

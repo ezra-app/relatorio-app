@@ -160,7 +160,7 @@ namespace RelatorioApp.i18n {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Meu Relatorio:.
+        ///   Looks up a localized string similar to Meu Relatório:.
         /// </summary>
         public static string main_titulo {
             get {

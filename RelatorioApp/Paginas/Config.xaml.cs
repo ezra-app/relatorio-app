@@ -29,6 +29,19 @@ namespace Relatorio2._0.Paginas
 
         private void SalcarConfigButton_Click(object sender, EventArgs e)
         {
+
+        }
+
+        void numercicTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.Key.ToString(), "[0-9]"))
+                e.Handled = false;
+            else e.Handled = true;
+
+        }
+
+        private void PhoneApplicationPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
+        {
             if (AlvoConfig.Text.Equals(""))
             {
                 AlvoConfig.Text = "00";
@@ -40,14 +53,6 @@ namespace Relatorio2._0.Paginas
             Utils.AddToISOSettings("config.alvo", AlvoConfig.Text);
             Utils.AddToISOSettings("config.alvoAnual", AlvoAnualConfig.Text);
             Utils.AddToISOSettings("config.email", EmailConfigTextBox.Text);
-        }
-
-        void numercicTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (System.Text.RegularExpressions.Regex.IsMatch(e.Key.ToString(), "[0-9]"))
-                e.Handled = false;
-            else e.Handled = true;
-
         }
 
 

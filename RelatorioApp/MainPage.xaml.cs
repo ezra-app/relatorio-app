@@ -226,6 +226,7 @@ namespace RelatorioApp
             int estudosQtd = Utils.ConvertToInt(SomaEstudos.Text);
             long folhetos = Utils.ConvertToLong(InputFolhetos.Text);
 
+            //salvando estudo
             Estudo estudo = estudoRepository.GetByDate(dateControlFlick);
             if (estudo == null)
             {
@@ -234,19 +235,26 @@ namespace RelatorioApp
             }
             else
             {
-                if(estudo.Qtd != estudosQtd){
+                if (estudo.Qtd != estudosQtd)
+                {
                     estudo.Qtd = estudosQtd;
                     estudoRepository.Update(estudo);
                 }
-                
+
             }
 
-            //DateTime data = Convert.ToDateTime(datePicker.ValueString);
+            // salvando relatório. Somente se tiver alguma coisa
+            if (horas != 0 || min != 0 || revista != 0 || revisita != 0 
+                || livro != 0 || brochura != 0 || folhetos != 0)
+            {
 
-            Relatorio relatorio = new Relatorio(horas, min, revista, revisita, brochura, livro, dateControlFlick, folhetos);
-            relatorioRepository.Add(relatorio);
-            InitializeAllComponents();
-            updateTitle();
+                Relatorio relatorio = new Relatorio(horas, min, revista, revisita, brochura, livro, dateControlFlick, folhetos);
+                relatorioRepository.Add(relatorio);
+                InitializeAllComponents();
+                updateTitle();
+            }
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -576,6 +584,12 @@ namespace RelatorioApp
         private void estatisticasAppBar_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Paginas/Estatisticas.xaml", UriKind.Relative));
+        }
+
+        private void opniaoAppBar_Click(object sender, EventArgs e)
+        {
+            MarketplaceReviewTask task = new MarketplaceReviewTask();
+            task.Show();
         }
 
 

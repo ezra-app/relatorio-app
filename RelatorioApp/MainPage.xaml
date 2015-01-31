@@ -19,8 +19,9 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Opacity="0.6" IsVisible="True" IsMenuEnabled="True" BackgroundColor="#FF19697D" ForegroundColor="Black">
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="sobreAppBar" Text="Sobre" Click="sobreAppBar_Click"/>
                 <shell:ApplicationBarMenuItem x:Name="estatisticasAppBar" Text="Estatísticas" Click="estatisticasAppBar_Click"/>
+                <shell:ApplicationBarMenuItem x:Name="opniaoAppBar" Text="Dê sua opinião" Click="opniaoAppBar_Click"/>
+                <shell:ApplicationBarMenuItem x:Name="sobreAppBar" Text="Sobre" Click="sobreAppBar_Click"/>
             </shell:ApplicationBar.MenuItems>
             <shell:ApplicationBarIconButton x:Name="AppBarrSalvar" IconUri="/Assets/AppBar/appbar.save.rest.png" Text="Salvar" Click="AppBarrSalvar_Click"/>
             <shell:ApplicationBarIconButton x:Name="AppBarConfigButton" IconUri="/Assets/AppBar/appbar.feature.settings.rest.png" Text="Config" Click="AppBarConfigButton_Click"/>
@@ -32,19 +33,25 @@
     <phone:PhoneApplicationPage.Resources>
         <shell:ApplicationBar x:Key="DefaultAppBar"  Opacity="0.6" BackgroundColor="#FF19697D" ForegroundColor="Black">
             <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="estatisticasAppBar1" Text="Estatísticas" Click="estatisticasAppBar_Click"/>
+                <shell:ApplicationBarMenuItem x:Name="opniaoAppBar1" Text="Dê sua opinião" Click="opniaoAppBar_Click"/>
                 <shell:ApplicationBarMenuItem x:Name="sobreAppBar1" Text="Sobre" Click="sobreAppBar_Click"/>
             </shell:ApplicationBar.MenuItems>
             <shell:ApplicationBarIconButton x:Name="AppBarrSalvar1" IconUri="/Assets/AppBar/appbar.save.rest.png" Text="Salvar" Click="AppBarrSalvar_Click"/>
             <shell:ApplicationBarIconButton x:Name="AppBarConfigButton1" IconUri="/Assets/AppBar/appbar.feature.settings.rest.png" Text="Config" Click="AppBarConfigButton_Click"/>
+            <shell:ApplicationBarIconButton x:Name="AppBarBruttonEmail1" IconUri="/Assets/AppBar/appbar.feature.email.rest.png" Text="Enviar" Click="AppBarBruttonEmail_Click"/>
             <shell:ApplicationBarIconButton x:Name="Iniciar1" IconUri="/Assets/AppBar/appbar.transport.play.rest.png" Text="Iniciar" Click="Iniciar_Click"/>
         </shell:ApplicationBar>
 
         <shell:ApplicationBar x:Key="IniciadoContAppBar"  Opacity="0.6" BackgroundColor="#FF19697D" ForegroundColor="White">
             <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="estatisticasAppBar2" Text="Estatísticas" Click="estatisticasAppBar_Click"/>
+                <shell:ApplicationBarMenuItem x:Name="opniaoAppBar2" Text="Dê sua opinião" Click="opniaoAppBar_Click"/>
                 <shell:ApplicationBarMenuItem x:Name="sobreAppBar2" Text="Sobre" Click="sobreAppBar_Click"/>
             </shell:ApplicationBar.MenuItems>
             <shell:ApplicationBarIconButton x:Name="AppBarrSalvar2" IconUri="/Assets/AppBar/appbar.save.rest.png" Text="Salvar" Click="AppBarrSalvar_Click"/>
             <shell:ApplicationBarIconButton x:Name="AppBarConfigButton2" IconUri="/Assets/AppBar/appbar.feature.settings.rest.png" Text="Config" Click="AppBarConfigButton_Click"/>
+            <shell:ApplicationBarIconButton x:Name="AppBarBruttonEmail2" IconUri="/Assets/AppBar/appbar.feature.email.rest.png" Text="Enviar" Click="AppBarBruttonEmail_Click"/>
             <shell:ApplicationBarIconButton x:Name="Parar" IconUri="/Assets/AppBar/appbar.transport.pause.rest.png" Text="Parar" Click="Iniciar_Click"/>
         </shell:ApplicationBar>
 
@@ -115,9 +122,11 @@
                 Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
                 Duration="0:0:0.5" From="500" To="0"/>
         </Storyboard>
+        
         <ControlTemplate x:Key="PhoneDisabledTextBoxTemplate" TargetType="TextBox">
             <ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch"/>
         </ControlTemplate>
+        
         <Style x:Key="TextBoxStyle1" TargetType="TextBox">
             <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
