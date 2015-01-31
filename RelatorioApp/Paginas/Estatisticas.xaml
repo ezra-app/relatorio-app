@@ -39,7 +39,7 @@
                 <TextBlock x:Name="FaltamLabel" TextWrapping="Wrap" Text="Faltam: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
                 <TextBlock x:Name="PorMesLabel" TextWrapping="Wrap" Text="Preciso por mês: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
                 <TextBlock x:Name="blank" TextWrapping="Wrap" FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Text=" "/>
-                <TextBlock x:Name="totaisRevistas" TextWrapping="Wrap" Text="Revisitas: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
+                <TextBlock x:Name="totaisRevistas" TextWrapping="Wrap" Text="Revistas: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
                 <TextBlock x:Name="totaisRevisitas" TextWrapping="Wrap" Text="Revisitas: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
                 <TextBlock x:Name="totaisLivros" TextWrapping="Wrap" Text="Livros: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
                 <TextBlock x:Name="totaisBrochuras" TextWrapping="Wrap" Text="Brochuras: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
