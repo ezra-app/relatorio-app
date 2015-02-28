@@ -165,18 +165,62 @@ namespace RelatorioApp
             {
                 FaltamTextBlock.Text = "-";
             }
-
+            
             int totalDiasDoMes = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-            int porDiaEmMinutos = faltamEmMinutos / ((totalDiasDoMes + 1) - DateTime.Now.Day);
+            List<DayOfWeek> diasUteisSemana = (List<DayOfWeek>) Utils.GetIsoSettings("config.diasSemanaTrab");
+            int porDiaEmMinutos = 0;
+            if (diasUteisSemana != null && diasUteisSemana.Count() > 0)
+            {
+                int diasUteisFaltantes = DiasUteisDeTrabalhoFaltantes(diasUteisSemana);
+                if (diasUteisFaltantes <= 0)
+                {
+                    diasUteisFaltantes = 1;
+                }
+                porDiaEmMinutos = faltamEmMinutos / diasUteisFaltantes;
+            }
+            else
+            {
+                porDiaEmMinutos = faltamEmMinutos / ((totalDiasDoMes + 1) - DateTime.Now.Day);
+            }
+           
             TimeSpan porDiaTs = new TimeSpan(0, porDiaEmMinutos, 0);
             if (porDiaEmMinutos > 0)
             {
                 PorDiaTextBlock.Text = Utils.FormatTime(porDiaTs) + " h";
+                // DEBUG
+                //PorDiaTextBlock.Text = Convert.ToString(DiasUteisDeTrabalhoFaltantes());
             }
             else
             {
                 PorDiaTextBlock.Text = "-";
             }
+        }
+
+
+        private int DiasUteisDeTrabalhoFaltantes(List<DayOfWeek> diasUteisSemana)
+        {
+
+            DateTime date = DateTime.Now;
+            //List<DayOfWeek> diasUteisSemana = new List<DayOfWeek> { DayOfWeek.Sunday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Saturday, DayOfWeek.Friday };
+            int totalDiasDoMes = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+
+            int diasUteisFaltantes = 0;
+            for (int i = DateTime.Now.Day; i <= totalDiasDoMes; i++)
+            {
+                if (diasUteisSemana.Contains(date.DayOfWeek))
+                {
+                    diasUteisFaltantes++;
+                }
+                date = date.AddDays(1);
+            }
+            return diasUteisFaltantes;
+           
+        }
+
+        static void Main(string[] args)
+        {
+            // Display the number of command line arguments:
+            System.Console.WriteLine(args.Length);
         }
 
 

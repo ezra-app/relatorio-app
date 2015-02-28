@@ -65,6 +65,20 @@
                     <TextBox x:Name="EmailConfigTextBox" BorderBrush="#FFC1BEEB" TextAlignment="Left" HorizontalAlignment="Left" Height="71" Margin="10,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="364" InputScope="EmailUserName"/>
                     <TextBlock HorizontalAlignment="Left" Margin="20,113,0,0" TextWrapping="Wrap" Text="Alvo Anual: " VerticalAlignment="Top"/>
                     <TextBox x:Name="AlvoAnualConfig" BorderBrush="#FFC1BEEB" MaxLength="3" TextAlignment="Center" HorizontalAlignment="Left" Height="71" Margin="10,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Text="00" InputScope="Number"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="20,324,0,0" TextWrapping="Wrap" Text="Dias que sairei no campo:" VerticalAlignment="Top"/>
+                    <StackPanel Margin="20,361,37,106">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="402">
+                            <CheckBox x:Name="SegCheckBox" Content="Seg." FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Margin="0,0,-2,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="#FFC1BEEB" Background="#7FC1BEEB" Checked="SegCheckBox_Checked" IsChecked="True"/>
+                            <CheckBox x:Name="TerCheckBox" Content="Ter." FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" BorderBrush="#FFC1BEEB" Background="#7FC1BEEB" Checked="TerCheckBox_Checked"  IsChecked="True"/>
+                            <CheckBox x:Name="QuaCheckBox" Content="Qua." FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Margin="0,0,-8,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="#FFC1BEEB" Background="#7FC1BEEB" Checked="QuaCheckBox_Checked"   IsChecked="True"/>
+                            <CheckBox x:Name="QuiCheckBox" Content="Qui." FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Margin="0,0,-4,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="#FFC1BEEB" Background="#7FC1BEEB" Checked="QuiCheckBox_Checked"   IsChecked="True"/>
+                        </StackPanel>
+                        <StackPanel Height="69" Orientation="Horizontal">
+                            <CheckBox x:Name="SexCheckBox" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Margin="0,0,-3,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="#FFC1BEEB" Background="#7FC1BEEB" Checked="SexCheckBox_Checked"  IsChecked="True" Content="Sex."/>
+                            <CheckBox x:Name="SabCheckBox" Content="Sab." FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" BorderBrush="#FFC1BEEB" Background="#7FC1BEEB" Checked="SabCheckBox_Checked"   IsChecked="True"/>
+                            <CheckBox x:Name="DomCheckBox" Content="Dom." FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Margin="0,0,-11,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="#FFC1BEEB" Background="#7FC1BEEB" Checked="DomCheckBox_Checked"   IsChecked="True"/>
+                        </StackPanel>
+                    </StackPanel>
 
 
                 </Grid>

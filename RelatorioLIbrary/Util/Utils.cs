@@ -128,6 +128,11 @@ namespace RelatorioLibrary.Util
             return "";
         }
 
+        public static object GetIsoSettings(String key)
+        {
+            return IsolatedStorageSettings.ApplicationSettings.Contains(key) ? IsolatedStorageSettings.ApplicationSettings[key] : null;
+        }
+
         public static void teste(String key)
         {
            
