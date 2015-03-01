@@ -90,7 +90,16 @@
                                     <TextBlock x:Name="DiaDet" TextWrapping="Wrap" FontFamily="{StaticResource Dancing}" Foreground="#FF0023FD" Text="{Binding FormatedDia}"  Margin="5,20,0,0" Height="53" FontSize="35" FontWeight="Bold" FontStyle="Italic" Width="186" TextDecorations="Underline"/>
                                     <Button Content="" CommandParameter="{Binding Path=Id}" Width="103" BorderBrush="{x:Null}" Foreground="#FF0023FD" Margin="10,0,0,-17" Click="Button_Click">
                                         <Button.Background>
-                                            <ImageBrush Stretch="Fill" ImageSource="/Imagens/delete.png"/>
+                                            <ImageBrush Stretch="None" ImageSource="/Imagens/delete.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                    <Button x:Name="ButtonEditar" Content="" CommandParameter="{Binding Path=Id}" Width="103" BorderBrush="{x:Null}" Foreground="#FF0023FD" Margin="-20,0,0,-17" HorizontalAlignment="Left" Click="ButtonEditar_Click">
+                                        <Button.Background>
+                                            <ImageBrush Stretch="None" ImageSource="/Imagens/edit.png">
+                                                <ImageBrush.RelativeTransform>
+                                                    <CompositeTransform CenterY="0.5" CenterX="0.5" TranslateX="0"/>
+                                                </ImageBrush.RelativeTransform>
+                                            </ImageBrush>
                                         </Button.Background>
                                     </Button>
                                 </StackPanel>

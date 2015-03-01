@@ -112,5 +112,10 @@ namespace Relatorio2._0.Paginas
             
         }
 
+        private void ButtonEditar_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Paginas/Editar.xaml?relatorioId=" + ((Button)sender).CommandParameter.ToString(), UriKind.Relative));
+        }
+
     }
 }

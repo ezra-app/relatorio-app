@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Text;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace RelatorioLibrary.Util
 {
@@ -136,6 +138,29 @@ namespace RelatorioLibrary.Util
         public static void teste(String key)
         {
            
+        }
+
+        public void InitializeTextBoxFocus(TextBox textbox, String gotFocus, String lostFocus)
+        {
+            if (FocusManager.GetFocusedElement() != textbox)
+            {
+                textbox.Text = lostFocus;
+            }
+            else
+            {
+                textbox.Text = gotFocus;
+            }
+
+            textbox.KeyDown += new KeyEventHandler(numercicTextBox_KeyDown);
+
+        }
+
+        void numercicTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.Key.ToString(), "[0-9]"))
+                e.Handled = false;
+            else e.Handled = true;
+
         }
 
     }

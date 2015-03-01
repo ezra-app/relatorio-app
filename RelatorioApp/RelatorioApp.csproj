@@ -88,6 +88,9 @@
     <Compile Include="Paginas\Calculator.xaml.cs">
       <DependentUpon>Calculator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\Editar.xaml.cs">
+      <DependentUpon>Editar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Estatisticas.xaml.cs">
       <DependentUpon>Estatisticas.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Paginas\Calculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\Editar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,6 +158,7 @@
     <Content Include="Imagens\back_backgroung.png" />
     <Content Include="Imagens\clip.png" />
     <Content Include="Imagens\delete.png" />
+    <Content Include="Imagens\edit.png" />
     <Content Include="Imagens\horiz_line.png" />
     <Content Include="Imagens\marca_texto.png" />
     <Content Include="Imagens\note.png" />

@@ -1,0 +1,203 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="RelatorioApp.Paginas.Editar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" BackKeyPress="PhoneApplicationPage_BackKeyPress">
+    <phone:PhoneApplicationPage.Resources>
+
+        <ControlTemplate x:Key="PhoneDisabledTextBoxTemplate" TargetType="TextBox">
+            <ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch"/>
+        </ControlTemplate>
+
+        <Style x:Key="TextBoxStyle1" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+            <Setter Property="Background" Value="{StaticResource PhoneTextBoxBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}"/>
+            <Setter Property="SelectionBackground" Value="{StaticResource PhoneAccentBrush}"/>
+            <Setter Property="SelectionForeground" Value="{StaticResource PhoneTextBoxSelectionForegroundBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="EnabledBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="DisabledOrReadonlyBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="ReadOnly">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="EnabledBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="DisabledOrReadonlyBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="DisabledOrReadonlyBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="DisabledOrReadonlyBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="DisabledOrReadonlyContent">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxReadOnlyBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused">
+                                        <Storyboard>
+                                            <!--ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="EnabledBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBackgroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames-->
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="EnabledBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBorderBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="EnabledBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Margin="{StaticResource PhoneTouchTargetOverhang}">
+                                <ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch"/>
+                            </Border>
+                            <Border x:Name="DisabledOrReadonlyBorder" BorderBrush="{StaticResource PhoneDisabledBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Margin="{StaticResource PhoneTouchTargetOverhang}" Visibility="Collapsed">
+                                <TextBox x:Name="DisabledOrReadonlyContent" Background="Transparent" Foreground="{StaticResource PhoneDisabledBrush}" FontWeight="{TemplateBinding FontWeight}" FontStyle="{TemplateBinding FontStyle}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" IsReadOnly="True" SelectionForeground="{TemplateBinding SelectionForeground}" SelectionBackground="{TemplateBinding SelectionBackground}" TextAlignment="{TemplateBinding TextAlignment}" TextWrapping="{TemplateBinding TextWrapping}" Text="{TemplateBinding Text}" Template="{StaticResource PhoneDisabledTextBoxTemplate}"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar BackgroundColor="#FF19697D" ForegroundColor="Black" Opacity="0.6" IsVisible="True">
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.save.rest.png" Text="Salvar" Click="ApplicationBarIconButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/Imagens/app_background.png"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--TitlePanel contains the name of the application and page title-->
+        <Image HorizontalAlignment="Left" Height="1063" Margin="24,-292,0,0" VerticalAlignment="Top" Width="4" Source="/Imagens/horiz_line.png" Stretch="Fill" Opacity="0.75"/>
+        <Image HorizontalAlignment="Left" Height="6" VerticalAlignment="Top" Width="460" Source="/Imagens/horiz_line.png" Stretch="Fill" Margin="11,68,0,0" Opacity="0.6"/>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="150,0,10,810">
+            <TextBlock x:Name="Titulo" TextAlignment="Left" FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="60" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-109,0,10,0" FontWeight="Bold" Width="419">
+            	<Run Text="Sem"/>
+            	<Run Text=", dia "/>
+            	<Run Text="-"/>
+            </TextBlock>
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Margin="0,79,10,116">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="26*"/>
+                <ColumnDefinition Width="21*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="RelatorioGrid" HorizontalAlignment="Left" Height="624" Margin="30,34,0,0" VerticalAlignment="Top" Width="440" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="83*"/>
+                    <ColumnDefinition Width="137*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="TextMeuRelatorio_Copy" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="46,8,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_horas, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="96" FontSize="35" FontWeight="Bold" Height="40"/>
+
+                <TextBlock x:Name="TextMeuRelatorio_Copy1" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="46,75,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_revAvul, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Height="40" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="TextMeuRelatorio_Copy2" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="46,145,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_revisitas, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
+                <TextBlock x:Name="TextMeuRelatorio_Copy3" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="48,218,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_livros, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
+                <TextBlock x:Name="TextMeuRelatorio_Copy4" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="46,288,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_brochuras, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
+
+                <Canvas x:Name="SomatoriosGroup" RenderTransformOrigin="0.5,0.5"/>
+                <Image x:Name="MarcadorImg" Grid.Column="1" HorizontalAlignment="Left" Height="48" Margin="10,10,0,0" VerticalAlignment="Top" Width="155" Source="/Imagens/marca_texto.png" Stretch="Fill"/>
+                <TextBox x:Name="InputHora" MaxLength="3" Grid.Column="1" TextAlignment="Right" FontFamily="{StaticResource Dancing}" Margin="22,0,166,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" BorderThickness="0" InputScope="Number" Height="70" GotFocus="InputBrochuras_GotFocus" LostFocus="InputHoras_LostFocus" Background="{x:Null}" Style="{StaticResource TextBoxStyle1}"/>
+                <TextBox x:Name="InputMin" MaxLength="3" Grid.Column="1" TextAlignment="Left" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Height="70" Margin="83,0,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="92" FontSize="28" FontWeight="Bold" BorderThickness="0" InputScope="Number" GotFocus="InputBrochuras_GotFocus" LostFocus="InputHoras_LostFocus" Background="{x:Null}" Style="{StaticResource TextBoxStyle1}"/>
+                <TextBox x:Name="InputRevistas" MaxLength="3" Grid.Column="1" TextAlignment="Center" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Height="70" Margin="39,65,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" FontSize="25" FontWeight="Bold" BorderThickness="0" InputScope="Number" GotFocus="InputBrochuras_GotFocus" LostFocus="InputBrochuras_LostFocus" Style="{StaticResource TextBoxStyle1}">
+                    <TextBox.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Imagens/marca_texto.png"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBox x:Name="InputRevisitas" MaxLength="3" Grid.Column="1" TextAlignment="Center" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Height="70" Margin="39,135,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" FontSize="25" FontWeight="Bold" BorderThickness="0" InputScope="Number" GotFocus="InputBrochuras_GotFocus" LostFocus="InputBrochuras_LostFocus" Style="{StaticResource TextBoxStyle1}">
+                    <TextBox.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Imagens/marca_texto.png"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBox x:Name="InputLivros" MaxLength="3" Grid.Column="1" TextAlignment="Center" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Height="70" Margin="39,210,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" FontSize="25" FontWeight="Bold" BorderThickness="0" InputScope="Number" GotFocus="InputBrochuras_GotFocus" LostFocus="InputBrochuras_LostFocus" Style="{StaticResource TextBoxStyle1}">
+                    <TextBox.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Imagens/marca_texto.png"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBox x:Name="InputBrochuras" MaxLength="3" Grid.Column="1" TextAlignment="Center" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Height="70" Margin="39,285,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" FontSize="25" FontWeight="Bold" BorderThickness="0" InputScope="Number" GotFocus="InputBrochuras_GotFocus" LostFocus="InputBrochuras_LostFocus" Style="{StaticResource TextBoxStyle1}">
+                    <TextBox.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Imagens/marca_texto.png"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBox x:Name="InputFolhetos" MaxLength="3" Grid.Column="1" TextAlignment="Center" FontFamily="{StaticResource Dancing}" HorizontalAlignment="Left" Height="70" Margin="39,356,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" FontSize="25" FontWeight="Bold" BorderThickness="0" InputScope="Number" GotFocus="InputBrochuras_GotFocus" LostFocus="InputBrochuras_LostFocus" Style="{StaticResource TextBoxStyle1}" RenderTransformOrigin="0.533,-0.2">
+                    <TextBox.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Imagens/marca_texto.png"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock x:Name="TextMeuRelatorio_Copy5" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="92,8,166,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontSize="35" FontWeight="Bold" Height="40" Grid.Column="1"/>
+                <TextBlock x:Name="TextMeuFolhetos" HorizontalAlignment="Left" Foreground="#FF0023FD" FontFamily="{StaticResource Dancing}" Margin="46,366,0,0" TextWrapping="Wrap" Text="{Binding AppResources.main_folhetos, Mode=OneWay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="146" FontSize="35" FontWeight="Bold" Grid.ColumnSpan="2" Height="40"/>
+                <Image HorizontalAlignment="Left" Visibility="Visible" Height="25" Margin="18,296,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
+                <Image HorizontalAlignment="Left" Visibility="Visible" Height="25" Margin="18,373,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
+                <Image HorizontalAlignment="Left" Visibility="Visible" Height="25" Margin="18,154,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
+                <Image HorizontalAlignment="Left" Visibility="Visible" Height="25" Margin="18,225,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
+                <Image HorizontalAlignment="Left" Visibility="Visible" Height="25" Margin="18,85,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
+                <Image HorizontalAlignment="Left" Visibility="Visible" Height="25" Margin="18,16,0,0" VerticalAlignment="Top" Width="38" Source="/Imagens/seta.png" Opacity="0.9"/>
+
+            </Grid>
+
+        </Grid>
+
+        <!--TitlePanel contains the name of the application and page title-->
+
+        <!--ContentPanel - place additional content here-->
+    </Grid>
+
+</phone:PhoneApplicationPage>

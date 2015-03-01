@@ -1,6 +1,7 @@
 ﻿using Horas.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -248,6 +249,50 @@ namespace Horas.DataBase.Repository
                 }
 
             }
+        }
+
+        public Relatorio get(int id)
+        {
+            Relatorio relatorio = new Relatorio();
+            using (RelatorioDataBaseContext context = new RelatorioDataBaseContext(RelatorioDataBaseContext.ConnectionString))
+            {
+                try
+                {
+                    IQueryable<Relatorio> query =
+                        from c in context.RelatorioTable
+                        where c.Id == id
+                        select c;
+                    relatorio = query.FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.StackTrace);
+                    Debug.WriteLine(e.Message);
+                    MessageBox.Show("PROBLEMA AO RECUPERAR RELATORIO");
+                }
+            }
+
+            return relatorio;
+        }
+
+        public void Update(Relatorio relatorio)
+        {
+            using (RelatorioDataBaseContext context = new RelatorioDataBaseContext(RelatorioDataBaseContext.ConnectionString))
+            {
+                try
+                {
+                    context.RelatorioTable.Attach(relatorio);
+                    context.Refresh(RefreshMode.KeepCurrentValues, relatorio);
+                    context.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.StackTrace);
+                    Debug.WriteLine(e.Message);
+                    MessageBox.Show("PROBLEMA AO ATUALIZAR RELATORIO");
+                }
+            }
+
         }
 
     }
