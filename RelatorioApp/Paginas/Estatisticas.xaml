@@ -44,6 +44,7 @@
                 <TextBlock x:Name="totaisLivros" TextWrapping="Wrap" Text="Livros: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
                 <TextBlock x:Name="totaisBrochuras" TextWrapping="Wrap" Text="Brochuras: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
                 <TextBlock x:Name="totaisFolhetos" TextWrapping="Wrap" Text="Folhetos: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
+                <TextBlock x:Name="horasPorMes" TextWrapping="Wrap" Text="Horas/Mês: " FontFamily="{StaticResource Dancing}" Foreground="Black" FontSize="30" Margin="20,0,0,0"/>
             </StackPanel>
             <Image HorizontalAlignment="Left" Height="3" VerticalAlignment="Top" Width="134" Source="/Imagens/horiz_line.png" Stretch="Fill" Margin="3,43,0,0" Opacity="0.6"/>
             <Image HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="208" Source="/Imagens/separator_manuscrito.png" Margin="115,213,0,0"/>
