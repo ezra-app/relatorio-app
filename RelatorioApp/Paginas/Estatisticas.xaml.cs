@@ -72,11 +72,11 @@ namespace RelatorioApp.Paginas
                 RequisitoLabel.Text += alvoAnual + ":00 hrs";
 
                 totaisRevistas.Text += relatorio.Revistas.ToString() + "  (" + relatorio.Revistas/12 + "/Mês)";
-                totaisRevisitas.Text += relatorio.Revisitas.ToString() + "  (" + relatorio.Revistas / 12 + "/Mês)";
-                totaisLivros.Text += relatorio.Livros.ToString() + "  (" + relatorio.Revistas / 12 + "/Mês)"; ;
-                totaisBrochuras.Text += relatorio.Brochuras.ToString() + "  (" + relatorio.Revistas / 12 + "/Mês)";
-                totaisFolhetos.Text += relatorio.Folhetos.ToString() + "  (" + relatorio.Revistas / 12 + "/Mês)";
-                horasPorMes.Text += relatorio.Horas / 12 + "/Mês";
+                totaisRevisitas.Text += relatorio.Revisitas.ToString() + "  (" + relatorio.Revisitas / 12 + "/Mês)";
+                totaisLivros.Text += relatorio.Livros.ToString() + "  (" + relatorio.Livros / 12 + "/Mês)"; ;
+                totaisBrochuras.Text += relatorio.Brochuras.ToString() + "  (" + relatorio.Brochuras / 12 + "/Mês)";
+                totaisFolhetos.Text += relatorio.Folhetos.ToString() + "  (" + relatorio.Folhetos / 12 + "/Mês)";
+                horasPorMes.Text += relatorio.Horas / (12 - mesesQueFaltam) + "/Mês";
 
 
             }
