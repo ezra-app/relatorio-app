@@ -35,8 +35,10 @@ namespace RelatorioApp.Paginas
 
                 RelatorioRepository relatorioRepository = new RelatorioRepository();
                 Relatorio relatorio = relatorioRepository.GetRelatorioTotalAno();
+                Relatorio relatorioMes = relatorioRepository.GetRelatorioTotalMes(DateTime.Now);
 
                 int horasTotaisEmMin = (relatorio.Horas * 60) + relatorio.Minutos;
+                int horasMesEmMinutos = (relatorioMes.Horas * 60) + relatorioMes.Minutos;
                 int alvoAnualEmMin = Utils.ConvertToInt(alvoAnual) * 60;
 
                 int mesesQueFaltam = 0;
@@ -59,13 +61,14 @@ namespace RelatorioApp.Paginas
                 int faltamEmMinutos = alvoAnualEmMin - horasTotaisEmMin;
                 if (faltamEmMinutos > 0)
                 {
-                    int porMes = faltamEmMinutos / mesesQueFaltam;
+                    int porMes = (faltamEmMinutos + horasMesEmMinutos) / mesesQueFaltam;
                     FaltamLabel.Text += Utils.FormatTime(new TimeSpan(0, faltamEmMinutos, 0)) + " hrs";
-                    PorMesLabel.Text += Utils.FormatTime(new TimeSpan(0, porMes, 0)) + " hrs";
+                    PorMesLabel.Text += Utils.FormatTime(new TimeSpan(0, porMes , 0)) + " hrs";
                 }
                 else
                 {
                     FaltamLabel.Text = "   Parabéns você já fechou o ano!";
+                    PorMesLabel.Text = "  ";
                 }
 
                 TrabalhadasLabel.Text += relatorio.GetFormatedTime() + " hrs";
