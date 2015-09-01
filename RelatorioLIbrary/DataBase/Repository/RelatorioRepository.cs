@@ -61,9 +61,9 @@ namespace Horas.DataBase.Repository
         {
             int mesReferencia = 9;
             int anoReferencia = data.Year;
-            if (data.Month < mesReferencia)
+            if (data.Month >= mesReferencia)
             {
-                anoReferencia = data.Year - 1;
+                anoReferencia = data.Year + 1;
             }
 
             IList<Relatorio> relatorioList = new List<Relatorio>();
@@ -75,9 +75,9 @@ namespace Horas.DataBase.Repository
                         from c in context.RelatorioTable
                         where
                         (c.Data.Month >= mesReferencia &&
-                        c.Data.Year == anoReferencia) ||
-                        (c.Data.Month <= data.Month &&
-                        c.Data.Year == data.Year)
+                        c.Data.Year == anoReferencia - 1) ||
+                        (c.Data.Month < mesReferencia &&
+                        c.Data.Year == anoReferencia)
                         orderby c.Data descending
                         select c;
                     relatorioList = query.ToList();

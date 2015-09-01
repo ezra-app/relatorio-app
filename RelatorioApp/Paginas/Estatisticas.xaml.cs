@@ -74,14 +74,21 @@ namespace RelatorioApp.Paginas
                 TrabalhadasLabel.Text += relatorio.GetFormatedTime() + " hrs";
                 RequisitoLabel.Text += alvoAnual + ":00 hrs";
 
-                totaisRevistas.Text += relatorio.Revistas.ToString() + "  (" + relatorio.Revistas/12 + "/Mês)";
-                totaisRevisitas.Text += relatorio.Revisitas.ToString() + "  (" + relatorio.Revisitas / 12 + "/Mês)";
-                totaisLivros.Text += relatorio.Livros.ToString() + "  (" + relatorio.Livros / 12 + "/Mês)"; ;
-                totaisBrochuras.Text += relatorio.Brochuras.ToString() + "  (" + relatorio.Brochuras / 12 + "/Mês)";
-                totaisFolhetos.Text += relatorio.Folhetos.ToString() + "  (" + relatorio.Folhetos / 12 + "/Mês)";
-                horasPorMes.Text += relatorio.Horas / (12 - mesesQueFaltam) + "/Mês";
+                totaisRevistas.Text += relatorio.Revistas.ToString() + "  (" + relatorio.Revistas / (mesesQueFaltam == 12 ? 1 : 12 - mesesQueFaltam) + "/Mês)";
+                totaisRevisitas.Text += relatorio.Revisitas.ToString() + "  (" + relatorio.Revisitas / (mesesQueFaltam == 12 ? 1 : 12 - mesesQueFaltam) + "/Mês)";
+                totaisLivros.Text += relatorio.Livros.ToString() + "  (" + relatorio.Livros / (mesesQueFaltam == 12 ? 1 : 12 - mesesQueFaltam) + "/Mês)"; ;
+                totaisBrochuras.Text += relatorio.Brochuras.ToString() + "  (" + relatorio.Brochuras / (mesesQueFaltam == 12 ? 1 : 12 - mesesQueFaltam) + "/Mês)";
+                totaisFolhetos.Text += relatorio.Folhetos.ToString() + "  (" + relatorio.Folhetos / (mesesQueFaltam == 12 ? 1 : 12 - mesesQueFaltam) + "/Mês)";
 
-
+                if (mesesQueFaltam == 12)
+                {
+                    horasPorMes.Text += relatorio.Horas + "/Mês";
+                }
+                else
+                {
+                    horasPorMes.Text += relatorio.Horas / (12 - mesesQueFaltam) + "/Mês";
+                }
+        
             }
             
         }
