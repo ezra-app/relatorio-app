@@ -27,12 +27,28 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Height="211">
-            	<Run Text="Versão: 1.1.19"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="436" Height="69">
+            	<Run Text="Versão: 1.1.20"/>
             	<LineBreak/>
             	<Run Text="DB: 2"/>
             	<LineBreak/>
             	<Run/>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="436" Height="479">
+            	<Run FontWeight="Bold" Text="Política de privacidade"/>
+            	<LineBreak/>
+            	<Run/>
+            	<LineBreak/>
+            	<Run Text="Salvo as informações coletadas pela própria Microsoft este aplicativo não coleta nem envia informações confidenciais."/>
+            	<LineBreak/>
+            	<Run Text="Todas informações cadastradas neste aplicativo serão salvos no seu próprio dispositivo."/>
+            	<LineBreak/>
+            	<Run/>
+            	<LineBreak/>
+            	<Run Text="Esta política de privacidade foi atualizada em 02/01/2017. "/>
+            	<LineBreak/>
+            	<Run Text="Nossa política de privacidade pode mudar de tempos em tempos, em caso de mudanças atualizaremos o aplicativo com as novas políticas."/>
+
             </TextBlock>
         </Grid>
     </Grid>
