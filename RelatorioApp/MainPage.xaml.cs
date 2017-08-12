@@ -57,16 +57,16 @@ namespace RelatorioApp
             InitializeTextBoxFocus(InputRevisitas, "", "0");
             InitializeTextBoxFocus(InputRevistas, "", "0");
             InitializeTextBoxFocus(InputLivros, "", "0");
-            InitializeTextBoxFocus(InputBrochuras, "", "0");
-            InitializeTextBoxFocus(InputFolhetos, "", "0");
+            //InitializeTextBoxFocus(InputBrochuras, "", "0");
+            //InitializeTextBoxFocus(InputFolhetos, "", "0");
             InitializeMetasGrid(MetasGrid);
 
             Relatorio relatorio = relatorioRepository.GetRelatorioTotalMes(dateControlFlick);
             SomaLivros.Text = Convert.ToString(relatorio.Livros);
             SomaRevisitas.Text = Convert.ToString(relatorio.Revisitas);
             SomaRevistas.Text = Convert.ToString(relatorio.Revistas);
-            SomaBrochuras.Text = Convert.ToString(relatorio.Brochuras);
-            SomaFolhetos.Text = Convert.ToString(relatorio.Folhetos);
+            //SomaBrochuras.Text = Convert.ToString(relatorio.Brochuras);
+            //SomaFolhetos.Text = Convert.ToString(relatorio.Folhetos);
             SomaHoras.Text = relatorio.GetFormatedTime();
 
             Estudo estudosMes = estudoRepository.GetByDate(dateControlFlick);
@@ -266,9 +266,9 @@ namespace RelatorioApp
             long revista = Utils.ConvertToLong(InputRevistas.Text);
             long revisita = Utils.ConvertToLong(InputRevisitas.Text);
             long livro = Utils.ConvertToLong(InputLivros.Text);
-            long brochura = Utils.ConvertToLong(InputBrochuras.Text);
+            //long brochura = Utils.ConvertToLong(InputBrochuras.Text);
             int estudosQtd = Utils.ConvertToInt(SomaEstudos.Text);
-            long folhetos = Utils.ConvertToLong(InputFolhetos.Text);
+            //long folhetos = Utils.ConvertToLong(InputFolhetos.Text);
 
             //salvando estudo
             Estudo estudo = estudoRepository.GetByDate(dateControlFlick);
@@ -289,10 +289,10 @@ namespace RelatorioApp
 
             // salvando relatório. Somente se tiver alguma coisa
             if (horas != 0 || min != 0 || revista != 0 || revisita != 0 
-                || livro != 0 || brochura != 0 || folhetos != 0)
+                || livro != 0)
             {
 
-                Relatorio relatorio = new Relatorio(horas, min, revista, revisita, brochura, livro, dateControlFlick, folhetos);
+                Relatorio relatorio = new Relatorio(horas, min, revista, revisita, 0, livro, dateControlFlick, 0);
                 relatorioRepository.Add(relatorio);
                 InitializeAllComponents();
                 updateTitle();
@@ -404,7 +404,7 @@ namespace RelatorioApp
                 // to make tile flip add data to background also
                 data.BackTitle = "  Relatório";
                 data.BackContent = "  Hrs.: " + SomaHoras.Text + "\n" + "  R.Avul.: " + SomaRevistas.Text +
-                    "\n  Rev.: " + SomaRevisitas.Text + "\n  Liv.: " + SomaLivros.Text + "\n  Bro.: " + SomaBrochuras.Text +
+                    "\n  Rev.: " + SomaRevisitas.Text + "\n  Liv.: " + SomaLivros.Text + "\n  Bro.: " + "-" +
                     "\n  Est.: " + SomaEstudos.Text;
                 data.BackBackgroundImage = new Uri("/Imagens/back_backgroung.png", UriKind.Relative);
                 // update tile
@@ -604,8 +604,8 @@ namespace RelatorioApp
                 "\nRevistas Avulsas: " + SomaRevistas.Text +
                 "\nRevisitas: " + SomaRevisitas.Text + 
                 "\nLivros: " + SomaLivros.Text + 
-                "\nBrochuras: " + SomaBrochuras.Text +
-                "\nFolhetos: " + SomaFolhetos.Text +
+                "\nBrochuras: " + "-" +
+                "\nFolhetos: " + "-" +
                 "\nEstudos: " + SomaEstudos.Text;
             
             if (email != null && email != "")

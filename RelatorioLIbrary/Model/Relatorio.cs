@@ -57,6 +57,12 @@ namespace Horas.Model
         [Column(Name = "folhetos", DbType = "bigint DEFAULT 0", CanBeNull = true)]
         public long Folhetos { get; set; }
 
+        [Column(Name = "publicacoes", DbType = "bigint DEFAULT 0", CanBeNull = true)]
+        public long Publicacoes { get; set; }
+
+        [Column(Name = "videos", DbType = "bigint DEFAULT 0", CanBeNull = true)]
+        public long Videos { get; set; }
+
         public String FormatedRelatorio { get; set; }
         public String FormatedHoras { get; set; }
         public String FormatedDia { get; set; }
